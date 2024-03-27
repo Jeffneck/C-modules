@@ -1,2 +1,2 @@
-# C-modules
-Some little exercices to discover C++ language
+# Cpp modules
+Some little projects to begin with C++ language
