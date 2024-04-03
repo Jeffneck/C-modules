@@ -4,8 +4,8 @@
 #include <iomanip>
 
 void Account::_displayTimestamp() {
-    std::time_t currentTime = std::time(nullptr);
-    std::tm* localTime = std::localtime(&currentTime);
+    std::time_t currentTime = std::time(nullptr); //nb de secondes ecoulees depuis 1970
+    std::tm* localTime = std::localtime(&currentTime); //retourne timestamp 
 
     // Utilisation de std::put_time pour formater la sortie du timestamp
     std::cout << "[" << std::put_time(localTime, "%Y%m%d_%H%M%S") << "] ";
