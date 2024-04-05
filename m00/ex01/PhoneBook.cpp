@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(){}
+PhoneBook::PhoneBook() : nbContacts(0), contactList(){}
 
 void    PhoneBook::add()
 {

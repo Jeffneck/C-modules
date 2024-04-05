@@ -1,6 +1,8 @@
 #include "Contact.hpp"
 
-Contact::Contact(){}
+Contact::Contact() : 
+firstName(""), lastName(""), nickname(""), phoneNumber(""), darkestSecret(""){}
+
 
 void    Contact::addContact(){
     std::cout << "Entrez le prenom : ";
