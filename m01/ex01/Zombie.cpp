@@ -8,13 +8,20 @@ void    Zombie::announce( void ) const
     << std::endl;
 }
 
-Zombie::Zombie(){}
+Zombie::Zombie()
+{
+    this->name = "";
+    std::cout
+    << "a fellow Zombie unnamed "
+    << " had been CREATED"
+    << std::endl;
+}
 
 Zombie::Zombie(std::string name)
 {
     this->name = name;
     std::cout
-    << "a FELLOW Zombie named "
+    << "a fellow Zombie named "
     << this->name 
     << " had been CREATED"
     << std::endl;

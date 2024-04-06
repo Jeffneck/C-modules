@@ -1,4 +1,4 @@
-NAME		= harl2.0
+NAME		= harlFilter
 
 CC			= c++
 
@@ -31,6 +31,16 @@ fclean: clean
 
 test: $(NAME)
 	./$(NAME)
+	@echo "\n\n"
+	./$(NAME) "I am not sure how tired I am today..."
+	@echo "\n\n"
+	./$(NAME) "DEBUG"
+	@echo "\n\n"
+	./$(NAME) "INFO"
+	@echo "\n\n"
+	./$(NAME) "WARNING"
+	@echo "\n\n"
+	./$(NAME) "ERROR"
 
 re: fclean all
 

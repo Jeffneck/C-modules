@@ -1,27 +1,3 @@
-// #include <fstream>
-// #include <iostream>
-
-// int main(int ac, char *av[])
-// {
-//     std::ifstream   infile;
-//     if (ac != 4)
-//     {
-//         std::cerr << "wrong number of arguments" << std::endl;
-//         std::cerr << "usage : <file> <old_word> <new_word>" << std::endl;
-//         return (1);
-//     }
-//     infile.open(av[1]);
-//     if (infile.fail())
-//     {
-// 		std::cout << "Error: " << av[1] << ":" 
-//         << " file can't be opened" << std::endl;
-// 		return (1);
-// 	}
-//     while(infile.eof())
-
-    
-// }
-
 #include <fstream>  // Pour std::ifstream
 #include <iostream> // Pour std::cerr
 #include <sstream>  // Pour std::stringstream
