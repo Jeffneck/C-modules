@@ -14,13 +14,8 @@ Fixed::Fixed(int const nb_int)
 
 Fixed::Fixed(float const nb_float)
 {
-	std::cout << "Int constructor called" << std::endl;
-	m_fixed_nb =  roundf(nb_float * (1 << m_fact_bits))
-}
-
-Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Float constructor called" << std::endl;
+	m_fixed_nb =  (int)roundf(nb_float * (1 << m_fact_bits));
 }
 
 Fixed::Fixed(const Fixed &to_copy)
@@ -28,6 +23,15 @@ Fixed::Fixed(const Fixed &to_copy)
 	std::cout << "Copy constructor called" << std::endl;
 	*this = to_copy;
 }
+
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
+}
+
+
+
+
 
 
 Fixed& Fixed::operator=(const Fixed& other )
@@ -39,9 +43,18 @@ Fixed& Fixed::operator=(const Fixed& other )
 	return (*this);
 }
 
+std::ostream&	operator<<(std::ostream& os, const Fixed &obj)
+{
+	os << obj.toFloat();
+	return (os);
+}
+
+
+
+
 int Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 	return(this->m_fixed_nb);
 }
 
@@ -51,14 +64,14 @@ void Fixed::setRawBits(int const raw)
 	m_fixed_nb = raw;
 }
 
-int Fixed::toInt(void)
+int Fixed::toInt(void)	const
 {
 	//retourne mon nb a virgule fixe en int
 	return (m_fixed_nb >> 8);
 }
-int Fixed::toFloat(void)
+
+float Fixed::toFloat(void)	const
 {
 	//transforme mon nb a virgule fixe en float
-	//donne 00000000 10111111 11011111 11101111
-	return ((float)m_fixed_nb >> m_fact_bits);
+	return ((float) m_fixed_nb / (1 << m_fact_bits));
 }
