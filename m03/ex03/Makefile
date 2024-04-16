@@ -1,12 +1,14 @@
-NAME		= scavtrap
+NAME		= diamondtrap
 
 CC			= c++
 
-CFLAGS		= -Wall -Wextra -Werror -std=c++98 -g3
+CFLAGS		= -std=c++98 #-g3 -Wall -Wextra -Werror
 
 SRC_FILES 	=	main.cpp \
 				ClapTrap.cpp \
 				ScavTrap.cpp \
+				FragTrap.cpp \
+				DiamondTrap.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
@@ -32,6 +34,7 @@ fclean: clean
 
 test: re
 	./$(NAME)
+	@fclean
 
 re: fclean all
 

@@ -39,6 +39,7 @@ int main() {
     claptrap1.displayStatus();
     claptrap1.takeDamage(9);
     claptrap1.displayStatus();
+    claptrap1.attack("Enemy");
     claptrap1.takeDamage(3);
     claptrap1.displayStatus();
 

@@ -28,7 +28,7 @@ class	ClapTrap
 
 
 	private :
-		const std::string _name;
+		std::string _name;
 		unsigned int	_hitPts;
 		unsigned int _energyPts;
 		unsigned int	_attackDmg;

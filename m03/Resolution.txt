@@ -1,0 +1,77 @@
+Etapes pour resoudre les exercices
+
+
+ex01:
+1)modifications a apporter a la classe ClapTrap
+la methode attack va etre modifiee par la classe derivee 
+	=> ajouter le mot cle virtual devant la methode attack dans ClapTrap (*cf : mot cle virtual)
+Nous souhaitons que ScavTrap herite des attributs de ClapTrap 
+	=> les attributs en protected plutot que private dans ClapTrap (les attributs et methodes private ne sont pas utilisables dans une classe derivee)
+
+2)creation de la class ScavTrap
+la class ScavTrap doit heriter de ClapTrap
+	=> ecrire "Class ScavTrap : public ClapTrap" dans ScavTrap.hpp (*cf : modes d'heritage)
+la class Scavtrap doit redefinir la fonction attack et avoir
+	=> simplement redeclarer la fonction attack dans ScavTrap.hpp et .cpp
+la class Scavtrap doit definir la methode guardGate
+	=> simplement eclarer la fonction attack dans ScavTrap.hpp et .cpp
+
+
+ex02 : RAS
+
+ex03 :
+On souhaite creer Class Diamond qui herite des attributs de Clap et qui utilise certaines fonctions de Scav et Frag
+	=> on doit modifier les .hpp Frag et Scav pour mettre class : virtual Claptrap (erreurs de compilation le cas echeant)
+Acceder a un attri
+
+
+
+COURS THEORIQUE
+I)Modes d'heritage
+
+class A {
+public:
+    int publicVarA;
+protected:
+    int protectedVarA;
+private:
+    int privateVarA;
+};
+
+// Classe B hérite de A
+class B : private A {
+    // publicVarA devient privé dans B
+    // protectedVarA devient privé dans B
+    // privateVarA n'est pas accessible dans B
+};
+
+class C : public A {
+    // publicVarA reste public dans C
+    // protectedVarA reste protégé dans C
+    // privateVarA n'est pas accessible dans C
+};
+
+class D : protected A {
+    // publicVarA devient protégé dans D
+    // protectedVarA devient protégé dans D
+    // privateVarA n'est pas accessible dans D
+};
+
+II) mot cle virtual
+
+Le mot-clé virtual est utilisé en C++ pour définir une méthode comme étant virtuelle dans une classe de base. 
+Lorsqu'une méthode est déclarée comme virtuelle dans une classe de base, 
+cela signifie qu'elle peut être redéfinie dans les classes dérivées.
+
+le mot cle virtual ne doit etre present que dans le fichier .hpp de la classe mere.
+
+Dans le cadre de l'héritage, déclarer une méthode comme virtuelle permet à une classe dérivée 
+de fournir une implémentation différente de cette méthode. Cela permet à votre programme de choisir 
+la bonne version de la méthode à exécuter en fonction du type de l'objet sur lequel elle est appelée, 
+ce qui est crucial pour le polymorphisme.
+
+Attention, une classe qui est destinee a etre heritee avec du polymorphisme devrait toujours avoir un destructeur virtual : 
+https://openclassrooms.com/forum/sujet/fonction-virtuelles-et-destructeur-virtuel
+https://h-deb.clg.qc.ca/Sujets/TrucsScouts/Destructeurs-virtuels-quand.html
+
+
