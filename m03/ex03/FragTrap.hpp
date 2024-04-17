@@ -3,6 +3,8 @@
 
 #include "ClapTrap.hpp"
 
+
+//on reference claptrap comme classe mere de maniere virtuelle a cause du dilemme du diamant
 class	FragTrap : virtual public ClapTrap
 {
 	public :
