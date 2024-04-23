@@ -1,14 +1,13 @@
-NAME		= diamondtrap
+NAME		= animals
 
 CC			= c++
 
 CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror
 
 SRC_FILES 	=	main.cpp \
-				ClapTrap.cpp \
-				ScavTrap.cpp \
-				FragTrap.cpp \
-				DiamondTrap.cpp \
+				Animal.cpp \
+				Cat.cpp \
+				Dog.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
