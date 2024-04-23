@@ -8,15 +8,15 @@ SRC_FILES 	=	megaphone.cpp
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-.cpp.o: $(NAME)
-	${CC} ${CFLAGS} -c -I. $< -o ${<:.cpp=.o}
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo -n Compiling executable $(NAME)...
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-	@echo Done.
+	@echo -n "Compiling executable $(NAME)..."
+	@$(CC) $(CFLAGS) $(OBJ) -I. -o $(NAME)
+	@echo "Done."
+
+%.o : %.cpp $(INC)
+	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
 	@echo -n Making clean...

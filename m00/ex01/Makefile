@@ -4,19 +4,22 @@ CC			= c++
 
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
-SRC_FILES 	=	awsome_phonebook.cpp PhoneBook.cpp Contact.cpp
+SRC_FILES 	=	main.cpp Contact.cpp PhoneBook.cpp
+
+INC 		=	Contact.hpp PhoneBook.hpp
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-.cpp.o: $(NAME)
-	${CC} ${CFLAGS} -c -I. $< -o ${<:.cpp=.o}
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo -n Compiling executable $(NAME)...
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-	@echo Done.
+	@echo -n "Compiling executable $(NAME)..."
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@echo "Done."
+
+%.o : %.cpp $(INC)
+	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
 	@echo -n Making clean...

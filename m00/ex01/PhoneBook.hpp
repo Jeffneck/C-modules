@@ -1,4 +1,4 @@
-#include "awsome_phonebook.hpp"
+#include "Contact.hpp"
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
@@ -10,7 +10,7 @@
         void    search() const;
         
         private :
-        Contact contactList[7];
+        Contact contactList[8];
         int nbContacts;
         void displayHeaders() const;
     };
