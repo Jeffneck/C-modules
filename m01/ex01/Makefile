@@ -10,9 +10,11 @@ SRC_FILES 	=	main.cpp \
 				randomChump.cpp \
 				zombieHorde.cpp \
 
+INC			=	Zombie.hpp
+
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-%.o   : %.cpp
+%.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c -I. $< -o $@
 
 all: $(NAME)

@@ -7,9 +7,11 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 SRC_FILES 	=	main.cpp \
 				Harl.cpp \
 
+INC			= Harl.hpp
+
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-%.o   : %.cpp
+%.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c -I. $< -o $@
 
 all: $(NAME)

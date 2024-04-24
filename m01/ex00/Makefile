@@ -1,15 +1,19 @@
-NAME		= sed_is_for_loosers
+NAME		= brainzzz
 
 CC			= c++
 
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 SRC_FILES 	=	main.cpp \
-				Harl.cpp \
+				Zombie.cpp \
+				newZombie.cpp \
+				randomChump.cpp \
+
+INC			=	Zombie.hpp
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-%.o   : %.cpp
+%.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c -I. $< -o $@
 
 all: $(NAME)
@@ -30,7 +34,7 @@ fclean: clean
 	@echo Done.
 
 test: $(NAME)
-	./$(NAME) main.cpp std SED
+	valgrind ./$(NAME)
 
 re: fclean all
 

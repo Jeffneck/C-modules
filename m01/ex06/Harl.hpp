@@ -11,10 +11,11 @@
 # include <iostream>
 class	Harl;
 typedef struct s_levelMap
-        {
-            std::string level;
-            void (Harl::*func)();
-        }   t_levelMap;
+{
+	std::string level;
+	//on donne l'adresse d' une methode de la classe Harl
+	void (Harl::*func)();
+}   t_levelMap;
 
 class	Harl
 {

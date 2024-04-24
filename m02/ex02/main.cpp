@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Fixed.hpp" 
+#include "Fixed.hpp"
 
 int	main( void )
 {
-	std::cout << "\n---- Asked Tests ---\n" << std::endl;
+	// std::cout << "\n---- Asked Tests ---\n" << std::endl;
 
 	{
 		Fixed a;

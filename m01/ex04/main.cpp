@@ -4,7 +4,7 @@
 #include <string>   // Pour std::string
 
 
-std::string const ft_sed(std::string const &buffer, std::string const &from, std::string const &to)
+std::string const ft_sed(std::string const &buffer, std::string const &oldSub, std::string const &newSub)
 {
     std::string newStr;
     std::size_t      pos = 0;
@@ -14,15 +14,15 @@ std::string const ft_sed(std::string const &buffer, std::string const &from, std
     //on lui indique une taille initiale proche de la taille finale
     newStr.reserve(buffer.length());
 
-    //avancer dans buffer jusqu'a ce qu' on ne trouve plus aucune occurence de from
-    while((pos = buffer.find(from, last)) != std::string::npos)
+    //avancer dans buffer jusqu'a ce qu' on ne trouve plus aucune occurence de oldSub
+    while((pos = buffer.find(oldSub, last)) != std::string::npos)
     {
-        //on ajoute la sub situee avant l'occurence de from detectee par find()
+        //on ajoute la sub situee avant l'occurence de oldSub detectee par find()
         newStr.append(buffer, last, (pos - last));
         //on ajoute la nouvelle sub
-        newStr.append(to);
-        //on avance dans le buffer pour ignorer les chars de from
-        last = pos + from.length();
+        newStr.append(newSub);
+        //on avance dans le buffer pour ignorer les chars de oldSub
+        last = pos + oldSub.length();
     }
     //on ajoute la sub finale (copie de last jusqu'a la fin de buffer)
     newStr.append(buffer.substr(last));

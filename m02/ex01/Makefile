@@ -7,9 +7,11 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 SRC_FILES 	=	main.cpp \
 				Fixed.cpp \
 
+INC			= Fixed.hpp
+
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-%.o   : %.cpp
+%.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c -I. $< -o $@
 
 all: $(NAME)
@@ -33,6 +35,8 @@ test: re
 	./$(NAME) > output_prog.txt
 	@echo "\n\n"
 	diff output_prog.txt output_wanted.txt
+	@rm output_prog.txt output_wanted.txt
+	@make fclean
 
 re: fclean all
 

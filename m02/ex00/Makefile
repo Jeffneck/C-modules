@@ -29,18 +29,11 @@ fclean: clean
 	@rm -f $(NAME)
 	@echo Done.
 
-test: $(NAME)
-	./$(NAME)
-	@echo "\n\n"
-	./$(NAME) "I am not sure how tired I am today..."
-	@echo "\n\n"
-	./$(NAME) "DEBUG"
-	@echo "\n\n"
-	./$(NAME) "INFO"
-	@echo "\n\n"
-	./$(NAME) "WARNING"
-	@echo "\n\n"
-	./$(NAME) "ERROR"
+test: re
+	./$(NAME) > output_prog.txt
+	-diff output_wanted.txt output_prog.txt
+	@rm output_prog.txt
+	@make fclean
 
 re: fclean all
 

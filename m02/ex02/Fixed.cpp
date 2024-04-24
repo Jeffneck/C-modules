@@ -122,13 +122,13 @@ Fixed	Fixed::operator-( const Fixed& other ) const
 }
 Fixed	Fixed::operator*( const Fixed& other ) const
 {
-	Fixed new_obj(m_fixed_nb * other.getRawBits());
+	Fixed new_obj(this->toFloat() * other.toFloat());
 	return (new_obj);
 
 }
 Fixed	Fixed::operator/( const Fixed& other ) const
 {
-	Fixed new_obj(m_fixed_nb / other.getRawBits());
+	Fixed new_obj(this->toFloat() * other.toFloat());
 	return (new_obj);
 }
 

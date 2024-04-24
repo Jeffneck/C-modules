@@ -30,6 +30,8 @@ fclean: clean
 
 test: $(NAME)
 	./$(NAME) main.cpp std SED
+	@cat main.cpp.replace
+	@rm main.cpp.replace
 
 re: fclean all
 

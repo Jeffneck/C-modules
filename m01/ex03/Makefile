@@ -9,9 +9,11 @@ SRC_FILES 	=	main.cpp \
 				HumanB.cpp \
 				Weapon.cpp \
 
+INC			=	HumanA.hpp HumanB.hpp Weapon.hpp
+
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-%.o   : %.cpp
+%.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c -I. $< -o $@
 
 all: $(NAME)

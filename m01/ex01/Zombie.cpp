@@ -12,7 +12,7 @@ Zombie::Zombie()
 {
     this->name = "";
     std::cout
-    << "a fellow Zombie unnamed "
+    << "a fellow Zombie Unnamed"
     << " had been CREATED"
     << std::endl;
 }
@@ -36,3 +36,7 @@ Zombie::~Zombie()
     << std::endl;
 }
 
+void    Zombie::setName(std::string n)
+{
+    this->name = n;
+}

@@ -8,8 +8,8 @@ SRC_FILES 	=	main.cpp
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-.cpp.o: $(NAME)
-	${CC} ${CFLAGS} -c -I. $< -o ${<:.cpp=.o}
+%.o   : %.cpp 
+	${CC} ${CFLAGS} -c -I. $< -o $@
 
 all: $(NAME)
 

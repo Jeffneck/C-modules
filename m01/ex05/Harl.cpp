@@ -5,6 +5,7 @@ Harl::Harl()
     std::cout << GRAY << "[CREATION]:" << RESET
     << "A new messenger came to earth, his name is Harl, let's listen his teachings"
     << std::endl;
+    //ler les mots cles aux pointeurs de methodes
     _levelMap[0].level = "DEBUG"; 
     _levelMap[0].func = &Harl::debug;
     _levelMap[1].level = "INFO"; 
@@ -25,13 +26,12 @@ Harl::~Harl()
 
 void    Harl::complain( std::string level)
 {
-    //bonne pratique car s'adapte si on ajoute de nouveaux levels
     int nbLevels = sizeof(_levelMap) / sizeof(t_levelMap);
 
     for(int i = 0; i < nbLevels; i++)
     {
         if(level == _levelMap[i].level)
-            (this->*(_levelMap[i].func))();
+            (this->*(_levelMap[i].func))(); //on derefenrence l'adresse de la methode 
     }
 }
 

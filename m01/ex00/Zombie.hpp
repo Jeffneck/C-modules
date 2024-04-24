@@ -12,15 +12,13 @@ class Zombie
 
     public:
         void announce ( void ) const;
+        Zombie();
         Zombie(std::string name);
         ~Zombie();
 };
 
 
-
-    
-
-
-
+Zombie  *newZombie( std::string name );
+void    randomChump( std::string name);
 
 #endif //ZOMBIE_HPP
