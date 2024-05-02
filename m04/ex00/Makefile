@@ -6,6 +6,8 @@ CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror
 
 SRC_FILES 	=	main.cpp \
 				Animal.cpp \
+				WrongAnimal.cpp \
+				WrongCat.cpp \
 				Cat.cpp \
 				Dog.cpp \
 
@@ -33,7 +35,7 @@ fclean: clean
 
 test: re
 	./$(NAME)
-	@fclean
+	@make fclean
 
 re: fclean all
 

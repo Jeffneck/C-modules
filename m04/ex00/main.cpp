@@ -1,36 +1,40 @@
 #include "Animal.hpp"
+#include "WrongAnimal.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 #include "Dog.hpp"
 
 int main()
 {
     {
+    //construct metaclass
     const Animal* meta = new Animal();
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
+    //construct subclasses
+	const Animal* dogo = new Dog();
+    const Animal* gato = new Cat();
+    std::cout << dogo->getType() << " " << std::endl;
+    std::cout << gato->getType() << " " << std::endl;
+    gato->makeSound();
+    dogo->makeSound();
     meta->makeSound();
     std::cout << "\n" << std::endl;
 		delete(meta);
-		delete(j);
-		delete(i);
+		delete(dogo);
+		delete(gato);
 	}	
     std::cout << "\n !--WRONG EXAMPLES--!" << std::endl;
 	{
-		const WrongAnimal* i = new WrongCat();
+		const WrongAnimal* bad_gato = new WrongCat();
 		const WrongAnimal* meta = new WrongAnimal();
 
 		std::cout << std::endl;
 		std::cout << meta->getType() << " " << std::endl;
-		std::cout << i->getType() << " " << std::endl;
+		std::cout << bad_gato->getType() << " " << std::endl;
 		std::cout << "\n" << std::endl;
-		i->makeSound(); //will output the cat sound!
+		bad_gato->makeSound(); 
 		meta->makeSound();
 		delete(meta);
-		delete(i);
+		delete(bad_gato);
 	}
 	return (0);
 }
