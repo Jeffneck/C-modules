@@ -3,9 +3,12 @@
 
 #include "ClapTrap.hpp"
 
-
-class	ScavTrap : virtual public ClapTrap
+//si on ne met pas virtual, il y aura 2 instances de claptrap crees au lieu d'1 seule commune a fragtrap et scavtrap
+class	ScavTrap : virtual public ClapTrap 
 {
+	protected : 
+	unsigned int _scav_enregyPts;
+
 	public :
 		ScavTrap();
 		ScavTrap(const std::string& name);

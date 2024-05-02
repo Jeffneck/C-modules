@@ -4,7 +4,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 {
 	std::cout << "ScavTrap " << _name << " created" << std::endl;
 	_hitPts = 100;
-	_energyPts = 50;
+	_energyPts = _scav_enregyPts = 50;
 	_attackDmg = 20;
 }
 

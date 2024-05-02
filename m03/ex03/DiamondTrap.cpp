@@ -5,7 +5,7 @@ DiamondTrap::DiamondTrap(): ClapTrap("Clappy_clap_trap")
 	std::cout << "DiamondTrap " << _name << " builded " << std::endl;
 	_name = "clappy";
 	_hitPts = FragTrap::_hitPts;
-	_energyPts = ScavTrap::_energyPts;
+	_energyPts = ScavTrap::_scav_enregyPts;
 	_attackDmg = FragTrap::_attackDmg;
 }
 
@@ -19,9 +19,9 @@ DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_trap")
 {
 	std::cout << "DiamondTrap " << name << " builded " << std::endl;
 	_name = name;
-	_hitPts = FragTrap::_hitPts; //normalement == 100
-	_energyPts = ClapTrap::_energyPts; //normalement == 50
-	_attackDmg = FragTrap::_attackDmg; //normalement == 30
+	_hitPts = FragTrap::_hitPts;
+	_energyPts = ScavTrap::_scav_enregyPts;
+	_attackDmg = FragTrap::_attackDmg;
 }
 
 DiamondTrap::~DiamondTrap()
@@ -31,7 +31,7 @@ DiamondTrap::~DiamondTrap()
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
 {
-	_name = src._name + "_clap_trap";
+	_name = src._name;
 	_hitPts = src._hitPts;
 	_energyPts = src._energyPts;
 	_attackDmg = src._attackDmg;
@@ -53,5 +53,4 @@ void	DiamondTrap::whoAmI(void)
 void	DiamondTrap::displayStatus()		const
 {
 	std::cout << "DiamondTrap named = " << _name << ", hit points = " << _hitPts  << ", energy points = " << _energyPts << ", attack damage = " << _attackDmg << std::endl;
-	std::cout << "TEST!!!!!!!!!!! " << _name << ", hit points = " << FragTrap::_hitPts  << ", energy points = " << ScavTrap::_energyPts << ", attack damage = " << FragTrap::_attackDmg << std::endl;
 }

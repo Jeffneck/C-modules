@@ -34,7 +34,7 @@
 class DiamondTrap: public ScavTrap, public FragTrap
 {
 	private:
-		std::string _name;
+		std::string _name;//name different du name de claptrap
 	public:
 	// Constructors
 		DiamondTrap();
