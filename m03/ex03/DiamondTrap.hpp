@@ -1,29 +1,5 @@
-// #ifndef DIAMONDTRAP_HPP
-// #define DIAMONDTRAP_HPP
-
-// #include "ClapTrap.hpp"
-// #include "FragTrap.hpp"
-// #include "ScavTrap.hpp"
-
-// class	DiamondTrap : public FragTrap, public ScavTrap
-// {
-// 	public :
-// 		DiamondTrap();
-// 		DiamondTrap(std::string& name);
-// 		DiamondTrap(const DiamondTrap& to_copy);
-// 		~DiamondTrap();
-
-// 		DiamondTrap &operator=(const DiamondTrap& other);
-
-// 		void	displayStatus()	const;
-// 		void	attack(const std::string& target);
-// };
-
-// #endif
-
-
-// Header-protection
-#pragma once
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 
 // Includes
 #include "ScavTrap.hpp"
@@ -34,7 +10,7 @@
 class DiamondTrap: public ScavTrap, public FragTrap
 {
 	private:
-		std::string _name;//name different du name de claptrap
+		std::string _name;//we changed the claptrap name
 	public:
 	// Constructors
 		DiamondTrap();
@@ -51,8 +27,6 @@ class DiamondTrap: public ScavTrap, public FragTrap
 		void attack(const std::string &target);
 		void whoAmI(void);
 		void displayStatus() const;
-	// Getter
-
-	// Setter
-
 };
+
+#endif

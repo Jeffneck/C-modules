@@ -12,7 +12,7 @@ SRC_FILES 	=	main.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-INC 		= ClapTrap.hpp FragTrap.hpp DiamondTrap.hpp
+INC 		= ClapTrap.hpp FragTrap.hpp ScavTrap.hpp DiamondTrap.hpp
 
 %.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c $< -o $@ -I.

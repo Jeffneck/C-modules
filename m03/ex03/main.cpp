@@ -2,10 +2,10 @@
 #include "DiamondTrap.hpp"
 
 int main() {
-    // Création d'un objet DiamondTrap avec le constructeur par défaut
+    std::cout << "\n\n---Création d'un objet DiamondTrap avec le constructeur par défaut---\n" << std::endl; 
     DiamondTrap diamond1("BlingBling");
 
-    //test des methodes heritees
+    std::cout << "\n\n---Test des methodes heritees---" << std::endl; 
     diamond1.whoAmI();
     diamond1.highFivesGuys();
     diamond1.guardGate();
@@ -14,7 +14,7 @@ int main() {
     diamond1.beRepaired(2);
     diamond1.displayStatus();
 
-    // Utilisation de la méthode attack sur l'objet diamond1
+    std::cout << "\n\n---Utilisation de la méthode attack sur l'objet diamond1---\n" << std::endl; 
     diamond1.attack("Enemy");
     diamond1.attack("Enemy");
     diamond1.attack("Enemy");
@@ -30,7 +30,7 @@ int main() {
 
     diamond1.displayStatus();
 
-    // Utilisation de la méthode takeDamage sur l'objet diamond1
+    std::cout << "\n\n---Utilisation de la méthode takeDamage sur l'objet diamond1---\n" << std::endl; 
     diamond1.takeDamage(5);
     diamond1.displayStatus();
     diamond1.takeDamage(9);
@@ -38,7 +38,7 @@ int main() {
     diamond1.takeDamage(3);
     diamond1.displayStatus();
 
+    std::cout << std::endl; 
 
-    diamond1.displayStatus();
     return 0;
 }

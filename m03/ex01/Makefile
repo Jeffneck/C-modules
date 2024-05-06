@@ -10,7 +10,9 @@ SRC_FILES 	=	main.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-%.o   : %.cpp
+INC 		= ClapTrap.hpp ScavTrap.hpp
+
+%.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c $< -o $@ -I.
 
 all: $(NAME)
@@ -32,6 +34,7 @@ fclean: clean
 
 test: re
 	./$(NAME)
+	@make fclean
 
 re: fclean all
 
