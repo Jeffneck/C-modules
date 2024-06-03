@@ -27,20 +27,15 @@ class Bureaucrat
         void				incrementGrade();
 
 		//Exceptions specifiques a notre classe
-        class GradeTooHighException : public std::exception
-        {
-                public :
-                    const char  *what() const throw(){
-            			return "Bureaucrat::GradeTooHigh";
-        			};
-        };
-        class GradeTooLowException : public std::exception
-        {
-                public :
-                    const char  *what() const throw(){
-            			return "Bureaucrat::GradeTooLow";
-        			};
-        };
+        class GradeTooLowException: public std::exception {
+			public:
+				const char *what() const throw(); 
+		};
+		
+		class GradeTooHighException: public std::exception {
+			public:
+				const char *what() const throw(); 
+		};
 };
 
 std::ostream    &operator<<( std::ostream &os, const Bureaucrat &to_display );

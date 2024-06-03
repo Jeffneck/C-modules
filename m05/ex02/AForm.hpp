@@ -1,11 +1,11 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <string>
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-class Form 
+class AForm 
 {
     private :
         const std::string   _name;
@@ -14,20 +14,25 @@ class Form
         const unsigned int  _grade_exec;
 
     public :
-        Form(const std::string name, const unsigned int _grade_sign, const unsigned int _grade_exec);
-        Form(const Form& to_copy);
-        virtual ~Form();
+        AForm(const std::string name, const unsigned int _grade_sign, const unsigned int _grade_exec);
+        AForm(const AForm& to_copy);
+        virtual ~AForm();
 
-        Form& operator=(Form& other);
+        AForm& operator=(AForm& other);
         
         void                    announce()      const;
         const std::string       getName()       const;
         bool                    getSigned()     const;
-        unsigned int      getSignGrade()  const;
-        unsigned int      getExecGrade()  const;
+        unsigned int            getSignGrade()  const;
+        unsigned int            getExecGrade()  const;
 
         void                    beSigned(const Bureaucrat& bureaucrat);
         void                    signForm(const Bureaucrat& bureaucrat);
+
+        void                        tryExecute(Bureaucrat const &executor) const;
+        virtual void                execute(Bureaucrat const &executor) const = 0;
+        virtual const std::string   getTarget() const = 0;
+
 
         class GradeTooLowException: public std::exception {
 			public:
@@ -41,7 +46,7 @@ class Form
 
 };
 
-std::ostream&   operator<<(std::ostream& os, const Form& to_display);
+std::ostream&   operator<<(std::ostream& os, const AForm& to_display);
 
 
 #endif
