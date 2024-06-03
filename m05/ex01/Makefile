@@ -6,10 +6,13 @@ CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror -Wshadow
 
 SRC_FILES 	=	main.cpp \
 				Bureaucrat.cpp \
+				Form.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-INC 		= Bureaucrat.hpp
+INC 		=	Bureaucrat.hpp \
+				Form.hpp \
+
 
 %.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c $< -o $@ -I.

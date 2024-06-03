@@ -2,25 +2,25 @@
 
 Bureaucrat::Bureaucrat() : _name("Unamed"), _grade(150)
 {
-    std::cout << "Default constructor called -" 
+    std::cout << "Bureaucrat Default constructor called : " 
     << *this 
     << std::endl;
 }
 Bureaucrat::Bureaucrat(std::string const name, unsigned int grade): _name(name)
 {
     this->setGrade(grade);
-    std::cout << "Constructor called -" << *this << std::endl;
+    std::cout << "Bureaucrat Constructor called : " << *this << std::endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &to_copy) : _name(to_copy.getName())
 {
     this->setGrade(to_copy.getGrade());
-    std::cout << "Copy constructor called -" << *this << std::endl;
+    std::cout << "Bureaucrat Copy constructor called : " << *this << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Destructor called -" << *this << std::endl;
+    std::cout << "Bureaucrat Destructor called : " << *this << std::endl;
 }
 
 // Methods -------------------------------
@@ -55,21 +55,20 @@ void            Bureaucrat::decrementGrade()
         throw Bureaucrat::GradeTooLowException();
     }
     _grade++;
-    std::cout << "Grade successfully decremented " << std::endl;
+    std::cout << "Bureaucrat Grade successfully decremented " << std::endl;
 }
 void            Bureaucrat::incrementGrade()
 {
     if (_grade == 1)
         throw Bureaucrat::GradeTooHighException();
     _grade--;
-    std::cout << "Grade successfully incremented " << std::endl;
+    std::cout << "Bureaucrat Grade successfully incremented " << std::endl;
 }
 
-//surcharges
-
+//Only copy the non-const attributes are copied
 Bureaucrat&  Bureaucrat::operator=(const Bureaucrat &other)
 {
-    std::cout << "Assignement operator called" << std::endl;
+    std::cout << "Bureaucrat Assignement operator called" << std::endl;
     if (this != &other)
         _grade = other.getGrade();
     return (*this);
@@ -77,6 +76,6 @@ Bureaucrat&  Bureaucrat::operator=(const Bureaucrat &other)
 
 std::ostream&   operator<<( std::ostream &os, const Bureaucrat &to_display )
 {
-    os << "Name : " << to_display.getName() << ", Grade : " << to_display.getGrade();
+    os << "Bureaucrat Name : " << to_display.getName() << ", Grade : " << to_display.getGrade();
     return(os);
 }

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include "Bureaucrat.hpp"
 
 class Form 
 {
@@ -14,22 +15,38 @@ class Form
 
     public :
         Form(const std::string name, const unsigned int _grade_sign, const unsigned int _grade_exec);
-        Form(Form& to_copy);
+        Form(const Form& to_copy);
         virtual ~Form();
+
+        Form& operator=(Form& other);
         
-        
+        void                    announce()      const;
         const std::string       getName()       const;
         bool                    getSigned()     const;
-        const unsigned int      getSignGrade()  const;
-        const unsigned int      getExecGrade()  const;
+        unsigned int      getSignGrade()  const;
+        unsigned int      getExecGrade()  const;
 
+        void                    beSigned(const Bureaucrat& bureaucrat);
+        void                    signForm(const Bureaucrat& bureaucrat);
+
+        class GradeTooHighException : public std::exception
+        {
+                public :
+                    const char  *what() const throw(){
+            			return "Form::GradeTooHigh";
+        			};
+        };
+        class GradeTooLowException : public std::exception
+        {
+                public :
+                    const char  *what() const throw(){
+            			return "Form::GradeTooLow";
+        			};
+        };
 
 };
 
-
-
-
-
+std::ostream&   operator<<(std::ostream& os, const Form& to_display);
 
 
 #endif
