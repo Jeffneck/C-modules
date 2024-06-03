@@ -17,8 +17,9 @@ class Bureaucrat
         Bureaucrat(Bureaucrat const &to_copy);
         virtual ~Bureaucrat();
 
-        Bureaucrat	&operator=( Bureaucrat& a );
+        Bureaucrat	&operator=( const Bureaucrat& a );
 
+        void                announce() const;
         std::string const	getName() const;
         unsigned int		getGrade() const;
 		void				setGrade(unsigned int new_grade);
@@ -42,6 +43,6 @@ class Bureaucrat
         };
 };
 
-std::ostream    &operator<<( std::ostream &flux, const Bureaucrat &bureaucrat );
+std::ostream    &operator<<( std::ostream &os, const Bureaucrat &to_display );
 
 #endif

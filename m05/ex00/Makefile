@@ -1,4 +1,4 @@
-NAME		= Bureaucrat00
+NAME		= bureaucrat
 
 CC			= c++
 
