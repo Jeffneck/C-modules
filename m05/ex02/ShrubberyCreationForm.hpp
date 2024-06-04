@@ -17,6 +17,7 @@ class ShrubberyCreationForm : public AForm
         virtual ~ShrubberyCreationForm();
 
         void		            execute(Bureaucrat const &executor) const;
+        void                    generateFile() const;
         const std::string       getTarget() const;
 };
 
