@@ -4,7 +4,9 @@
 #include <exception>
 #include <iostream>
 #include <string>
+#include "AForm.hpp"
 
+class AForm;
 class Bureaucrat
 {
     private :
@@ -25,6 +27,8 @@ class Bureaucrat
 		void				setGrade(unsigned int new_grade);
         void				decrementGrade();
         void				incrementGrade();
+        void				signForm(AForm &form) const;
+        void				executeForm(const AForm &form) const;
 
 		//Exceptions specifiques a notre classe
         class GradeTooLowException: public std::exception {

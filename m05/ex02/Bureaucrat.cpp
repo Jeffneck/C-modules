@@ -65,6 +65,30 @@ void            Bureaucrat::incrementGrade()
     std::cout << "Bureaucrat Grade successfully incremented " << std::endl;
 }
 
+void		Bureaucrat::signForm(AForm &form)   const
+{
+    try{
+        form.beSigned(*this);
+    }catch (std::exception &e){
+        std::cout << _name << " couldn’t sign " << form.getName() \
+		<< " because " << e.what() << "." << std::endl;
+        return ;
+    }
+    std::cout << _name << " signed " << form.getName() << "." << std::endl;
+}
+
+void		Bureaucrat::executeForm(const AForm &form)  const
+{
+        try{
+        form.beExecuted(*this);
+    }catch (std::exception &e){
+        std::cout << _name << " couldn’t execute " << form.getName() \
+		<< " because " << e.what() << "." << std::endl;
+        return ;
+    }
+    std::cout << _name << " executed " << form.getName() << "." << std::endl;
+}
+
 //Only copy the non-const attributes are copied
 Bureaucrat&  Bureaucrat::operator=(const Bureaucrat &other)
 {

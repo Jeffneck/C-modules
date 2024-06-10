@@ -27,7 +27,6 @@ class Form
         unsigned int      getExecGrade()  const;
 
         void                    beSigned(const Bureaucrat& bureaucrat);
-        void                    signForm(const Bureaucrat& bureaucrat);
 
         class GradeTooLowException: public std::exception {
 			public:

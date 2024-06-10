@@ -27,12 +27,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 void		ShrubberyCreationForm::generateFile() const
 {
     std::string new_filename(_target + "_shrubbery");
-    std::ofstream flux;
-
-        std::ofstream flux(new_filename.c_str());
-        if (!flux) {
-            throw std::runtime_error("Failed to open file: " + new_filename);
-        }
+    std::ofstream flux(new_filename.c_str());
+    //!flux is true whenever flux.badbit() or flux.failbit show some kind of error
+    if (!flux)
+        throw std::runtime_error("Failed to open file: " + new_filename);
 
     flux << "               ,@@@@@@@," << std::endl;
 	flux << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
@@ -45,30 +43,26 @@ void		ShrubberyCreationForm::generateFile() const
 	flux << "       |.|        | |         | |" << std::endl;
 	flux << "    \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
 
-        if (!flux) { // Check for errors during the write operation
-            throw std::runtime_error("Failed to write to file: " + new_filename);
-        }
+    if (!flux)// Check for errors during the write operation
+        throw std::runtime_error("Failed to write to file: " + new_filename);
+    flux.close();
 }
 
 void		ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
     try{
-        AForm::tryExecute(executor); //throw if executor can t exec form and if form is already signed.
+        AForm::beExecuted(executor); //throw if executor can t exec form and if form is already signed.
     }
     catch(std::exception& e){ 
-        throw; //throw the same exception
+        std::cerr << "Exception: " << e.what() << std::endl;
+        return ;
     }
-    {
 
     try {
-        AForm::tryExecute(executor); // throw if executor can't exec form and if form is already signed.
         this->generateFile();
-
     } catch (const std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;
-        // throw; //re throw si besoin de gerer l'exception plus haut
     }
-}
 }
 
 const std::string   ShrubberyCreationForm::getTarget() const

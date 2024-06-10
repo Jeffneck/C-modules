@@ -1,4 +1,4 @@
-NAME		= forms
+NAME		= sign_exec_forms
 
 CC			= c++
 
@@ -6,12 +6,15 @@ CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror -Wshadow
 
 SRC_FILES 	=	main.cpp \
 				Bureaucrat.cpp \
-				Form.cpp \
+				AForm.cpp \
+				ShrubberyCreationForm.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
 INC 		=	Bureaucrat.hpp \
-				Form.hpp \
+				AForm.hpp \
+				ShrubberyCreationForm.hpp \
+
 
 
 %.o   : %.cpp $(INC)

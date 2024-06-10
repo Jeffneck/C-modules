@@ -25,6 +25,17 @@ Bureaucrat::~Bureaucrat()
 
 // Methods -------------------------------
 
+void		Bureaucrat::signForm(Form &form)   const
+{
+    try{
+        form.beSigned(*this);
+    }catch (std::exception &e){
+        std::cout << _name << " couldn’t sign " << form.getName() \
+		<< " because " << e.what() << "." << std::endl;
+    }
+    std::cout << _name << " signed " << form.getName() << "." << std::endl;
+}
+
 void    Bureaucrat::announce() const
 {
     std::cout << *this << std::endl;

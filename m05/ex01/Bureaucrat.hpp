@@ -4,6 +4,7 @@
 #include <exception>
 #include <iostream>
 #include <string>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -19,6 +20,7 @@ class Bureaucrat
 
         Bureaucrat	&operator=( const Bureaucrat& a );
 
+        void                signForm(Form &form)   const;
         void                announce() const;
         std::string const	getName() const;
         unsigned int		getGrade() const;
