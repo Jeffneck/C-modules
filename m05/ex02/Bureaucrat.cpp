@@ -80,7 +80,7 @@ void		Bureaucrat::signForm(AForm &form)   const
 void		Bureaucrat::executeForm(const AForm &form)  const
 {
         try{
-        form.beExecuted(*this);
+        form.execute(*this);
     }catch (std::exception &e){
         std::cout << _name << " couldn’t execute " << form.getName() \
 		<< " because " << e.what() << "." << std::endl;

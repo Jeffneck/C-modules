@@ -95,5 +95,5 @@ const char* AForm::GradeTooLowException::what() const throw()
 
 const char * AForm::SignatureException::what() const throw()
 {
-    return("AForm::SignatureException : the form is not signed");
+    return("AForm::SignatureException");
 }

@@ -8,12 +8,17 @@ SRC_FILES 	=	main.cpp \
 				Bureaucrat.cpp \
 				AForm.cpp \
 				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp \
+				PresidentialPardonForm.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
 INC 		=	Bureaucrat.hpp \
 				AForm.hpp \
 				ShrubberyCreationForm.hpp \
+				RobotomyRequestForm.hpp \
+				PresidentialPardonForm.hpp \
+
 
 
 

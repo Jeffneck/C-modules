@@ -54,14 +54,13 @@ void		ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         AForm::beExecuted(executor); //throw if executor can t exec form and if form is already signed.
     }
     catch(std::exception& e){ 
-        std::cerr << "Exception: " << e.what() << std::endl;
-        return ;
+        throw ;
     }
 
     try {
         this->generateFile();
     } catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
+        throw ;
     }
 }
 

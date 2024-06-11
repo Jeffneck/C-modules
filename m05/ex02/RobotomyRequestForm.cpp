@@ -1,5 +1,4 @@
 #include "RobotomyRequestForm.hpp"
-#include <fstream>
 #include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string name, const std::string target) : AForm(name, 72, 45) , _target(target)
@@ -28,12 +27,14 @@ RobotomyRequestForm::~RobotomyRequestForm()
 //special function
 void		RobotomyRequestForm::randomRobotomy() const
 {
-    srand((unsigned)time(NULL));
-    int nbgen = rand() % 2;
+    std::srand((unsigned)time(NULL));
+    int nbgen = std::rand() % 2;
+    std::cout << "driiiiillll  zzz zz" << std::endl;
     if (nbgen == 0)
-        
-
-
+        std::cout << _target << " have been successfully robotomized" << std::endl;
+    else 
+        std::cout << "robotomy failed on " << _target << std::endl;
+    
 }
 
 void		RobotomyRequestForm::execute(Bureaucrat const &executor) const
@@ -42,15 +43,9 @@ void		RobotomyRequestForm::execute(Bureaucrat const &executor) const
         AForm::beExecuted(executor); //throw if executor can t exec form and if form is already signed.
     }
     catch(std::exception& e){ 
-        std::cerr << "Exception: " << e.what() << std::endl;
-        return ;
+        throw;
     }
-
-    try {
-        this->randomRobotomy();
-    } catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
+    this->randomRobotomy();
 }
 
 const std::string   RobotomyRequestForm::getTarget() const
