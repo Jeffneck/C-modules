@@ -1,4 +1,4 @@
-NAME		= sign_exec_forms
+NAME		= intern
 
 CC			= c++
 
@@ -10,6 +10,7 @@ SRC_FILES 	=	main.cpp \
 				ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \
 				PresidentialPardonForm.cpp \
+				Intern.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
@@ -18,6 +19,7 @@ INC 		=	Bureaucrat.hpp \
 				ShrubberyCreationForm.hpp \
 				RobotomyRequestForm.hpp \
 				PresidentialPardonForm.hpp \
+				Intern.hpp \
 
 
 

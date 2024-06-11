@@ -28,12 +28,12 @@ int	main( void )
 		std::cout << "\n" << std::endl;
 		Tito.signForm(shru_form);
 		Tito.executeForm(shru_form);
-		std::cout << "\n" << std::endl;
 
 		std::cout << "\n" << std::endl;
 		Tito.signForm(pres_form);
 		Tito.executeForm(pres_form);
 		std::cout << RESET << std::endl;
+		std::cout << "\n" << std::endl;
 
 	}
 
@@ -51,11 +51,11 @@ int	main( void )
 
 		std::cout << "\n" << std::endl;
 		Pedro.executeForm(shru_form);
-		std::cout << "\n" << std::endl;
 
 		std::cout << "\n" << std::endl;
 		Pedro.executeForm(pres_form);
 		std::cout << RESET << std::endl;
+		std::cout << "\n" << std::endl;
 
 	}
 
@@ -75,12 +75,12 @@ int	main( void )
 		std::cout << "\n" << std::endl;
 		Rico.signForm(shru_form);
 		Jeannot.executeForm(shru_form);
-		std::cout << "\n" << std::endl;
 
 		std::cout << "\n" << std::endl;
 		Rico.signForm(pres_form);
 		Jeannot.executeForm(pres_form);
 		std::cout << RESET << std::endl;
+		std::cout << "\n" << std::endl;
 
 	}
 	return (0);
