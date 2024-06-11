@@ -35,6 +35,7 @@ $(NAME): $(OBJ)
 clean:
 	@echo -n Making clean...
 	@rm -rf $(OBJ)
+	@rm *_shrubbery
 	@echo Done.
 
 fclean: clean
