@@ -1,15 +1,25 @@
-NAME		= animals
+NAME		= final_fantasyXIII
 
 CC			= c++
 
 CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror
 
 SRC_FILES 	=	main.cpp \
+				Character.cpp \
+				Ice.cpp \ 
+				Cure.cpp \
 				
+
+INC			=	ICharacter.hpp \ 
+				Character.hpp \
+				AMateria.hpp \ 
+				Ice.hpp \
+				Cure.hpp \
+
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-%.o   : %.cpp
+%.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c $< -o $@ -I.
 
 all: $(NAME)

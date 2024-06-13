@@ -11,9 +11,15 @@ SRC_FILES 	=	main.cpp \
 				Cat.cpp \
 				Dog.cpp \
 
+INC			=	Animal.hpp \
+				WrongAnimal.hpp \
+				WrongCat.hpp \
+				Cat.hpp \
+				Dog.hpp \
+
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-%.o   : %.cpp
+%.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c $< -o $@ -I.
 
 all: $(NAME)
