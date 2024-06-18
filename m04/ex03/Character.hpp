@@ -1,7 +1,8 @@
-#ifndef CHARACTER_HPP
-#define CHARACTER_HPP
+#pragma once
 
 #include <string>
+
+
 class AMateria;
 class Character
 {
@@ -19,8 +20,8 @@ class Character
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
+		void delInventory();
+
 };
 
 std::ostream& operator<<(std::ostream& os, Character& toDisplay);
-
-#endif
