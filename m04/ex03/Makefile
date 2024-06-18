@@ -6,15 +6,19 @@ CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror
 
 SRC_FILES 	=	main.cpp \
 				Character.cpp \
-				Ice.cpp \ 
-				Cure.cpp \
+				Cure.cpp	 \
+				AMateria.cpp \
+				MateriaSource.cpp \
+				Ice.cpp	 \
 				
 
-INC			=	ICharacter.hpp \ 
+INC			=	ICharacter.hpp\
+				AMateria.hpp \
 				Character.hpp \
-				AMateria.hpp \ 
-				Ice.hpp \
-				Cure.hpp \
+				Cure.hpp	 \
+				Ice.hpp	 \
+				MateriaSource.hpp \
+				IMateriaSource.hpp \
 
 
 OBJ			= $(SRC_FILES:.cpp=.o)
