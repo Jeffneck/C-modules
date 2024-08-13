@@ -1,5 +1,15 @@
 #pragma once
 
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <iomanip>
+#include <limits>
+#include <cstdlib>
+#include <cmath>
+#include <cerrno> 
+#include <cctype>  // Pour std::isprint
+
 /*
 Differentes manieres de creer une classe non-instanciable
 
@@ -19,3 +29,36 @@ Une méthode statique dans une classe en C++ est une méthode qui est associée 
 Cela signifie que vous pouvez appeler une méthode statique sans avoir besoin de créer une instance de la classe.
 
 */
+
+
+
+class ScalarConverter {
+	public:
+		static void convert(const std::string &literal);
+		static void detectImpossibleConversion(const std::string &literal);
+		static void detectOverflow(const std::string &literal);
+
+		static bool charDetected(const std::string &literal);
+		static void convertToInt(const std::string &literal);
+		static void convertToFloat(const std::string &literal);
+		static void convertToChar(const std::string &literal);
+		static void convertToDouble(const std::string &literal);
+
+		static int choosePrecision(const std::string &literal);
+		static std::string strToLower(const std::string &literal);
+
+		class OverflowException: public std::exception {
+			public:
+				const char *what() const throw(); 
+		};
+		
+		class ImpossibleConversionException: public std::exception {
+			public:
+				const char *what() const throw(); 
+		};
+
+
+	private:
+		ScalarConverter();
+
+};
