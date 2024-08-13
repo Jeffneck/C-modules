@@ -6,8 +6,7 @@ void ScalarConverter::convert(const std::string& literal)
         if(ScalarConverter::charDetected(literal))
             return;
         ScalarConverter::detectImpossibleConversion(literal);
-        if(ScalarConverter::convertToInt(literal))
-			return;
+        ScalarConverter::convertToInt(literal);
         ScalarConverter::convertToFloat(literal);
         ScalarConverter::convertToDouble(literal);
         ScalarConverter::convertToChar(literal);
@@ -18,42 +17,32 @@ bool ScalarConverter::charDetected(const std::string &literal)
 	bool	is_char = (literal.length() == 1 && !std::isdigit(literal[0]));
 	if (!is_char)
 		return (0);
-	char     charValue = literal[0];
-	int     intValue = static_cast<int>(charValue);
+	char     charValue = static_cast<char>(literal[0]);
 
-	std::cout << "int: " << intValue << std::endl;
-	std::cout << "float: " << static_cast<float>(intValue) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(intValue) << ".0" << std::endl;
+	std::cout << "int: " << static_cast<int>(charValue) << std::endl;
+	std::cout << "float: " << static_cast<float>(charValue) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(charValue) << ".0" << std::endl;
+	if (std::isprint(static_cast<int>(charValue))) {
+			std::cout << "char: '" << charValue << "'" << std::endl;
+	} else {
+		std::cout << "char: Non displayable" << std::endl;
+	}
 	return (1);
 }
-	// std::ostringstream  oss;
-	// oss << intValue;
-	// std::string new_literal = oss.str();
 
-	// ScalarConverter::convertToInt(new_literal);
-	// ScalarConverter::convertToFloat(new_literal);
-	// ScalarConverter::convertToDouble(new_literal);
-	// ScalarConverter::convertToChar(new_literal);
-
-bool ScalarConverter::convertToInt(const std::string &literal) 
+void ScalarConverter::convertToInt(const std::string &literal) 
 {
 	std::stringstream ss(literal);
 	int intValue;
 	if (ss >> intValue) {
 		std::cout << "int: " << intValue << std::endl;
-		std::cout << "float: " << static_cast<float>(intValue) << std::endl;
-		std::cout << "double: " << static_cast<double>(intValue) << std::endl;
-		return(1);
-
 	} else {
 		std::cout << "int: impossible" << std::endl;
-		return(0);
 	}
 
 }
 
-
-bool ScalarConverter::convertToFloat(const std::string &literal) 
+void ScalarConverter::convertToFloat(const std::string &literal) 
 {
 	std::stringstream ss(literal);
 	float floatValue;
@@ -71,12 +60,10 @@ bool ScalarConverter::convertToFloat(const std::string &literal)
 			std::cout << "float: impossible" << std::endl;
 		}
 	}
-	return(1);
 }
 
 
-
-bool ScalarConverter::convertToDouble(const std::string &literal) 
+void ScalarConverter::convertToDouble(const std::string &literal) 
 {
 	std::stringstream ss(literal);
 	double doubleValue;
@@ -97,7 +84,6 @@ bool ScalarConverter::convertToDouble(const std::string &literal)
 			std::cout << "double: impossible" << std::endl;
 		}
 	}
-	return(1);
 }
 
 void ScalarConverter::convertToChar(const std::string &literal) 
