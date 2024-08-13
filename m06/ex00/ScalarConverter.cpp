@@ -6,7 +6,8 @@ void ScalarConverter::convert(const std::string& literal)
         if(ScalarConverter::charDetected(literal))
             return;
         ScalarConverter::detectImpossibleConversion(literal);
-        ScalarConverter::convertToInt(literal);
+        if(ScalarConverter::convertToInt(literal))
+			return;
         ScalarConverter::convertToFloat(literal);
         ScalarConverter::convertToDouble(literal);
         ScalarConverter::convertToChar(literal);
@@ -18,32 +19,41 @@ bool ScalarConverter::charDetected(const std::string &literal)
 	if (!is_char)
 		return (0);
 	char     charValue = literal[0];
-	int     asciiValue = static_cast<int>(charValue);
+	int     intValue = static_cast<int>(charValue);
 
-	std::ostringstream  oss;
-	oss << asciiValue;
-	std::string new_literal = oss.str();
-
-	ScalarConverter::convertToInt(new_literal);
-	ScalarConverter::convertToFloat(new_literal);
-	ScalarConverter::convertToDouble(new_literal);
-	ScalarConverter::convertToChar(new_literal);
+	std::cout << "int: " << intValue << std::endl;
+	std::cout << "float: " << static_cast<float>(intValue) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(intValue) << ".0" << std::endl;
 	return (1);
 }
+	// std::ostringstream  oss;
+	// oss << intValue;
+	// std::string new_literal = oss.str();
 
-void ScalarConverter::convertToInt(const std::string &literal) 
+	// ScalarConverter::convertToInt(new_literal);
+	// ScalarConverter::convertToFloat(new_literal);
+	// ScalarConverter::convertToDouble(new_literal);
+	// ScalarConverter::convertToChar(new_literal);
+
+bool ScalarConverter::convertToInt(const std::string &literal) 
 {
 	std::stringstream ss(literal);
 	int intValue;
 	if (ss >> intValue) {
 		std::cout << "int: " << intValue << std::endl;
+		std::cout << "float: " << static_cast<float>(intValue) << std::endl;
+		std::cout << "double: " << static_cast<double>(intValue) << std::endl;
+		return(1);
+
 	} else {
 		std::cout << "int: impossible" << std::endl;
+		return(0);
 	}
+
 }
 
 
-void ScalarConverter::convertToFloat(const std::string &literal) 
+bool ScalarConverter::convertToFloat(const std::string &literal) 
 {
 	std::stringstream ss(literal);
 	float floatValue;
@@ -61,11 +71,12 @@ void ScalarConverter::convertToFloat(const std::string &literal)
 			std::cout << "float: impossible" << std::endl;
 		}
 	}
+	return(1);
 }
 
 
 
-void ScalarConverter::convertToDouble(const std::string &literal) 
+bool ScalarConverter::convertToDouble(const std::string &literal) 
 {
 	std::stringstream ss(literal);
 	double doubleValue;
@@ -86,6 +97,7 @@ void ScalarConverter::convertToDouble(const std::string &literal)
 			std::cout << "double: impossible" << std::endl;
 		}
 	}
+	return(1);
 }
 
 void ScalarConverter::convertToChar(const std::string &literal) 
