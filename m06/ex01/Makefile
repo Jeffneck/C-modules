@@ -6,10 +6,13 @@ CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror
 
 SRC_FILES 	=	main.cpp \
 				Serialization.cpp \
+				Data.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
 INC 		=	Serialization.hpp \
+				Data.hpp \
+
 
 %.o   : %.cpp $(INC)
 	${CC} ${CFLAGS} -c $< -o $@ -I.
