@@ -1,12 +1,7 @@
 #pragma once
-#include <cstdint>
-#include <string>
+#include <stdint.h>
+#include "Data.hpp" 
 
-typedef struct Data 
-{
-	std::string str;
-	size_t		strLength;
-} Data;
 
 class Serialization
 {
@@ -16,4 +11,5 @@ class Serialization
 	
 	private :
 	Serialization();
+	~Serialization();
 };
