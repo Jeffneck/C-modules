@@ -8,7 +8,7 @@ int main(int ac, char **av)
 		Data data = {str, str.length()};
 		uintptr_t ptr = Serialization::serialize(&data);
 		data = Serialization::deserialize(ptr);
-		std::cout << "After deserialization" << std::endl; 
+		std::cout << "After deserialization" << std::endl; ///
 	}
 
 
