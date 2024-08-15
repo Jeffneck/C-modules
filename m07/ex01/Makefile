@@ -1,4 +1,4 @@
-NAME		= templates
+NAME		= iter
 
 CC			= c++
 
@@ -8,7 +8,7 @@ SRC_FILES 	=	main.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-INC 		=	templates.hpp \
+INC 		=	iter.hpp \
 				
 
 %.o   : %.cpp $(INC)
