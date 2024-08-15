@@ -1,17 +1,17 @@
-NAME		= serialization
+NAME		= real_type
 
 CC			= c++
 
 CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror
 
 SRC_FILES 	=	main.cpp \
-				Serialization.cpp \
-				Data.cpp \
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-INC 		=	Serialization.hpp \
-				Data.hpp \
+INC 		=	Base.hpp \
+				A.hpp \
+				B.hpp \
+				C.hpp \
 
 
 %.o   : %.cpp $(INC)
