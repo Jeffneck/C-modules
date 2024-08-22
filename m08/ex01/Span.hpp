@@ -35,27 +35,20 @@ class Span
 	~Span();
 	Span	&operator=( const Span& a );
 
-	void				addNumber(const int &nb);
-	const unsigned int	&shortestSpan( void ) const;
-	const unsigned int	&longestSpan( void ) const;
-	std::vector<int>	getIntVector( void ) const;
+	void	addNumber(const int &nb);
+	void	addItRange(std::vector<int>::iterator itBegin, std::vector<int>::iterator itEnd, std::vector<int>& container); 
+	bool	isValidRange(std::vector<int>::iterator itBegin, std::vector<int>::iterator itEnd, std::vector<int>& container);
 
-	// template <typename Iterator>
-	// void	addRangeNumber(Iterator begin, Iterator end)
-	// {
-	// 	if (m_int_vector.size() + std::distance(begin, end) > _maxSize)
-	// 		throw Span::MaxSizeExeption();
-	// 	m_int_vector.insert(m_int_vector.end(), begin, end);
-	// 	for (size_t i = 0; i < m_int_vector.size(); i++)
-	// 		std::cout << m_int_vector[i] << std::endl;
-	// }
+	unsigned int	shortestSpan( void ) const;
+	unsigned int	longestSpan( void ) const;
+	std::vector<int>	getIntVector( void ) const;
 
 	class MaxSizeExeption: public std::exception {
 		public:
 			const char *what() const throw();
 	};
 
-	class IntervalExeption: public std::exception {
+	class SpanExeption: public std::exception {
 		public:
 			const char *what() const throw();
 	};
