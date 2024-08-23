@@ -41,18 +41,21 @@ Cependant si on souhaite le faire, on peut passer par un appel de l'opérateur d
 
 template<typename T>
 
+
 class MutantStack: public std::stack<T, std::deque<T> >
 {
 
 	public:
-		typedef typename std::deque<T>::iterator iterator; //pratique pour appeler l' iterateur depuis l' exterieur (attention, le typedef doit etre public)
-		MutantStack() : std::stack<T, std::deque<T> >(){};
-		MutantStack(const MutantStack<T>& other) : std::stack<T, std::deque<T> >(other) {};
+		typedef std::stack<T, std::deque<T> > stackClass; //alias pour la classe stack
+		typedef typename std::deque<T>::iterator iterator; //alias pour l'iterator (pratique pour appeler l' iterateur depuis l' exterieur (attention, le typedef doit etre public))
+		
+		MutantStack() : stackClass(){};
+		MutantStack(const MutantStack<T>& other) : stackClass(other) {};
 		~MutantStack(){};
 
 		MutantStack<T>&		operator=(const MutantStack<T>& other) {
         if (this != &other) { 
-            std::stack<T, std::deque<T> >::operator=(other); // Appel de l'opérateur d'affectation de la classe de base
+            stackClass::operator=(other); // Appel de l'opérateur d'affectation de la classe de base
         }
         return *this;
     }
