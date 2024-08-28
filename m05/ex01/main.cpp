@@ -53,7 +53,7 @@ int main() {
         Bureaucrat bureaucrat("Alice", 120);
         Form form("Contract", 100, 100);
         std::cout << "Before being signed: " << form.getSigned() << std::endl;
-        form.signForm(bureaucrat);
+        bureaucrat.signForm(form);
         std::cout << "After being signed: " << form.getSigned() << std::endl;
     } catch (const std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
@@ -65,7 +65,7 @@ int main() {
         Bureaucrat bureaucrat("Fredo", 100);
         Form form("Contract", 100, 100);
         std::cout << "Before being signed: " << form.getSigned() << std::endl;
-        form.signForm(bureaucrat);
+        bureaucrat.signForm(form);
         std::cout << "After being signed: " << form.getSigned() << std::endl;
     } catch (const std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;

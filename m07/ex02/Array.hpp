@@ -1,24 +1,5 @@
 #pragma once
 
-// template<typename T>
-// class Array 
-// {
-// 	public : 
-// 		Array();
-// 		Array(const unsigned int &n);
-// 		Array(const Array& toCopy);
-// 		~Array();
-// 		Array&	operator=(const Array& toAssign);
-// 		T&		operator[](const unsigned int& index);
-
-// 		const unsigned int size(void) const;
-
-// 	private :
-// 		T*				_data;
-// 		unsigned int	_size;
-
-// };
-
 #include <iostream>
 #include <stdexcept>
 
@@ -34,13 +15,13 @@ class Array
 
 		Array(unsigned int n) : _size(n) 
 		{
-			_data = new T[n](); // Initialisation avec la valeur par défaut de T
+			_data = new T[n]();
 		}
 
 		Array(const Array& other) : _size(other._size)
 		{
 			_data = new T[_size];
-			for (unsigned int i = 0; i < _size; ++i) {
+			for (unsigned int i = 0; i < _size; i++) {
 				_data[i] = other._data[i];
 			}
 		}
@@ -53,7 +34,7 @@ class Array
 
 			_size = other._size;
 			_data = new T[_size];
-			for (unsigned int i = 0; i < _size; ++i) {
+			for (unsigned int i = 0; i < _size; i++) {
 				_data[i] = other._data[i];
 			}
 			return *this;

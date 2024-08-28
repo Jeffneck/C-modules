@@ -108,9 +108,11 @@ bool isValidValue(const std::string& valueStr, float& value) {
     // Lire la valeur en tant que float
     ss >> value;
 	double valueTest = 	static_cast<double>(value);
+	char minus;
+	ss >> minus;
 
     // Vérifier si la conversion a échoué ou si la valeur est négative
-    if (ss.fail() || valueTest < 0) {
+    if (ss.fail() || valueTest < 0 || minus = '-') {
         std::cerr << "Error: not a positive number." << std::endl;
         return false;
     }
