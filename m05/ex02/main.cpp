@@ -16,9 +16,9 @@ int	main( void )
 	{
 		Bureaucrat				Tito("Tito", 1);
 
-		PresidentialPardonForm	pres_form("presidential pardon", "prisoner");
-		RobotomyRequestForm		rob_form("Robotomy", "patient_105");
-		ShrubberyCreationForm	shru_form("shrubbery", "garden");
+		PresidentialPardonForm	pres_form("prisoner");
+		RobotomyRequestForm		rob_form("patient_105");
+		ShrubberyCreationForm	shru_form("garden");
 
 		std::cout << "\n" << std::endl;
 		std::cout << BLUE << std::endl;
@@ -40,9 +40,9 @@ int	main( void )
 	std::cout << RED << "\n!----- FAILING TESTS : SIGNATURE -----!" << RESET << std::endl;
 	{
 		Bureaucrat				Pedro("Pedro", 1);
-		PresidentialPardonForm	pres_form("presidential pardon", "prisoner");
-		RobotomyRequestForm		rob_form("Robotomy", "patient_105");
-		ShrubberyCreationForm	shru_form("shrubbery", "garden");
+		PresidentialPardonForm	pres_form("prisoner");
+		RobotomyRequestForm		rob_form("patient_105");
+		ShrubberyCreationForm	shru_form("garden");
 
 
 		std::cout << "\n" << std::endl;
@@ -63,9 +63,9 @@ int	main( void )
 	{
 		Bureaucrat				Jeannot("Jeannot", 150);
 		Bureaucrat				Rico("Rico", 1);
-		PresidentialPardonForm	pres_form("presidential pardon", "prisoner");
-		RobotomyRequestForm		rob_form("Robotomy", "patient_105");
-		ShrubberyCreationForm	shru_form("shrubbery", "garden");
+		PresidentialPardonForm	pres_form("prisoner");
+		RobotomyRequestForm		rob_form("patient_105");
+		ShrubberyCreationForm	shru_form("garden");
 
 		std::cout << "\n" << std::endl;
 		std::cout << BLUE << std::endl;
