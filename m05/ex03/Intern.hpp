@@ -6,29 +6,37 @@
 #include "PresidentialPardonForm.hpp"
 #include <string>
 #include <iostream>
+#include <cctype> // Pour std::tolower
 
 enum 
 {
-	ROBOTOMY_REQUEST,
-	SHRUBBERY_CREATION,
-	PRESIDENTIAL_PARDON
+        ROBOTOMY_REQUEST,
+        SHRUBBERY_CREATION,
+        PRESIDENTIAL_PARDON,
+        NUM_FORMS
 };
+
 class Intern
 {
-	public : 
-	Intern();
-	Intern(Intern &toCopy);
-	~Intern();
-	Intern& operator=(Intern& other);
+        public : 
+                Intern();
+                Intern(const Intern &toCopy);
+                ~Intern();
+                Intern& operator=(const Intern& other);
 
-	unsigned int getFormIndex(const std::string f_name) const;
-	AForm	*makeForm(const std::string f_name, const std::string target) const ;
+                int getFormIndex(const std::string& f_name) const;
+                AForm* makeForm(const std::string& f_name, const std::string& target) const;
 
-	class BadFormNameException : public std::exception
-	{
-		public :
-			const char* what() const throw();
-	};
+        private :
+                AForm* createRobotomyRequestForm(const std::string& target) const;
+                AForm* createShrubberyCreationForm(const std::string& target) const;
+                AForm* createPresidentialPardonForm(const std::string& target) const;
+
+        class BadFormNameException : public std::exception
+        {
+                public :
+                        const char* what() const throw();
+        };
 };
 
-#endif
+#endif // INTERN_HPP
