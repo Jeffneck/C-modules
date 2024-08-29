@@ -1,7 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string name, const std::string target) : AForm(name, 72, 45) , _target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("RR", 72, 45) , _target(target)
 {
     std::cout << "RobotomyRequestForm Default constructor called : "<< *this << std::endl;
 }
