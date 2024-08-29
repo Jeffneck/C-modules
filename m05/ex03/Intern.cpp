@@ -45,7 +45,6 @@ int Intern::getFormIndex(const std::string& f_name) const
 
 AForm* Intern::makeForm(const std::string& f_name, const std::string& target) const
 {
-    // Tableau de pointeurs sur fonctions membres
     typedef AForm* (Intern::*FormCreator)(const std::string&) const;
     static const FormCreator formCreators[NUM_FORMS] = 
         {
