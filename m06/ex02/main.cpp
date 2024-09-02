@@ -25,7 +25,8 @@ il renvoie un pointeur du type cible si la conversion est valide, sinon il renvo
 
 **Conversion en référence : 
 Lorsque dynamic_cast est utilisé pour convertir une référence, 
-il lance une exception de type std::bad_cast si la conversion n'est pas valide. C'est donc plus sûr pour détecter les erreurs par rapport aux conversions en pointeur qui pourraient simplement renvoyer nullptr.
+il lance une exception de type std::bad_cast si la conversion n'est pas valide. 
+C'est donc plus sûr pour détecter les erreurs.
 */
 
 Base *generate(void)
@@ -75,9 +76,9 @@ void identify(Base& p)
 {
 	try {
         (void)dynamic_cast<A&>(p);
-        std::cout << "A identified" << std::endl;
+        std::cout << "A identified" << std::endl;//pas affiche si le cast echoue
     }
-    catch (const std::exception&) {}
+    catch (const std::exception&) {} //on catch l'exception ici pour que les autres try puissent etre executes 
 
     try {
         (void)dynamic_cast<B&>(p);

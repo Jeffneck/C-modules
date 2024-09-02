@@ -1,3 +1,34 @@
+**RESUME
+
+**Generalites
+Utilisez static_cast lorsque vous êtes sûr que les types sont compatibles.
+Utilisez dynamic_cast pour les conversions de types polymorphiques et vérifiez toujours le résultat.
+Évitez d'utiliser reinterpret_cast sauf si c'est absolument nécessaire, car il peut entraîner des comportements indéfinis.
+Utilisez const_cast avec prudence, car il peut violer la constance et entraîner des comportements imprévisibles.
+
+
+**GESTION DES ERREURS
+
+les différents types de cast (static_cast, dynamic_cast, reinterpret_cast) ont des comportements distincts lorsqu'ils échouent. Voici un résumé des exceptions qui peuvent être lancées par chacun :
+
+1. static_cast
+Comportement : static_cast effectue des conversions à la compilation lorsque les types sont compatibles. Cela inclut des conversions entre types arithmétiques, des conversions explicites entre types de pointeurs, ou des conversions vers un type dérivé ou de base.
+Exceptions : static_cast ne lance pas d'exceptions. Si la conversion n'est pas possible (par exemple, essayer de caster un pointeur vers un type dérivé qui n'est pas réellement dérivé du type de base), le résultat peut être indéfini (mais il n'y aura pas d'exception).
+2. dynamic_cast
+Comportement : dynamic_cast est utilisé principalement pour les conversions sécurisées dans une hiérarchie de classes polymorphiques (celles qui ont au moins une fonction membre virtuelle).
+Exceptions :
+Si vous essayez de convertir un pointeur vers un type qui ne correspond pas au type cible, dynamic_cast retourne un pointeur nullptr au lieu de lancer une exception.
+Si vous essayez de convertir une référence vers un type incompatible (lors d'une conversion descendante dans la hiérarchie de classes), dynamic_cast lance une exception de type std::bad_cast.
+3. reinterpret_cast
+Comportement : reinterpret_cast effectue des conversions de bas niveau, sans vérification de type à la compilation ou à l'exécution. Il peut être utilisé pour convertir des pointeurs en types de données totalement non liés (par exemple, convertir un pointeur en un entier).
+Exceptions : reinterpret_cast ne lance pas d'exceptions. Comme il n'y a pas de vérification du type, les résultats sont généralement dépendants de la plateforme et peuvent être indéfinis si la conversion n'est pas correcte.
+Résumé
+static_cast : Pas d'exception, mais peut mener à un comportement indéfini si utilisé de manière incorrecte.
+dynamic_cast : Peut lancer std::bad_cast en cas d'échec lors de la conversion de référence. Retourne nullptr pour les conversions de pointeur échouées.
+reinterpret_cast : Pas d'exception, mais le résultat peut être indéfini.
+
+
+**FONCTIONNEMENT
 
 **static_cast<T>(e)
 Fait au moment de la compilation, ou du moins aussi tôt que possible (car pour une conversion d'un nombre entier à un nombre à virgule flottante, il faut quand même travailler un peu à l'exécution), et relativement sécuritaire. Par défaut, c'est probablement celui que vous voudrez privilégier.
