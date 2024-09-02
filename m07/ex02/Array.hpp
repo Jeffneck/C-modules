@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include <iostream>
 #include <stdexcept>
@@ -58,3 +59,6 @@ class Array
 			return _size;
 		}
 };
+
+
+#endif

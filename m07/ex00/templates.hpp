@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TEMPLATES_HPP
+#define TEMPLATES_HPP
 
 template <typename T>
 const T& max(const T& v1, const T& v2)
@@ -19,3 +20,5 @@ void	swap(T& v1, T& v2)
 	v1 = v2;
 	v2 = tmp;
 }
+
+#endif
