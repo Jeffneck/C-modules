@@ -1,14 +1,18 @@
-#pragma once
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include <string>
+#include <stack>
+#include "ICharacter.hpp"
 
 
 class AMateria;
 class Character : public ICharacter
 {
 	private :
-		std::string			_name;
-		AMateria*			_inventory[4];
+		std::string					_name;
+		AMateria*					_inventory[4];
+		// std::stack<AMateria*>		_unequipped;
 
 	public:
 		Character(std::string name);
@@ -25,3 +29,5 @@ class Character : public ICharacter
 };
 
 std::ostream& operator<<(std::ostream& os, Character& toDisplay);
+
+#endif

@@ -1,6 +1,11 @@
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(): _learnedMateria({0,0,0,0}){}
+MateriaSource::MateriaSource()
+{
+	for (int i = 0; i < 4; ++i)
+		_learnedMateria[i] = NULL;
+
+}
 
 MateriaSource::MateriaSource(const MateriaSource& other)
 {
@@ -36,7 +41,7 @@ void MateriaSource::learnMateria(AMateria* m)
 			if (!this->_learnedMateria[i])
 			{
 				this->_learnedMateria[i] = m;
-				std::cout << "The recipe to create " << m->getType() <<  " has been learned in MateriaSource !\n";
+				// std::cout << "The recipe to create " << m->getType() <<  " has been learned in MateriaSource !\n";
 				return;
 			}
 		}
@@ -49,7 +54,7 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 	{
 		if (_learnedMateria[i] && _learnedMateria[i]->getType() == type)
 		{
-			std::cout << "New Materia " << type <<  " has been created by MateriaSource !\n";
+			// std::cout << "New Materia " << type <<  " has been created by MateriaSource !\n";
 			return _learnedMateria[i]->clone();
 		}
 	}

@@ -39,7 +39,19 @@ std::tm parseDate(const std::string& date) {
     return tm;
 }
 
-// Comparateur pour std::tm
+/*
+
+L'opérateur () en C++ est l'opérateur de fonction. Lorsqu'il est utilisé dans une classe ou une structure,
+ il permet à des objets de cette classe ou structure d'être utilisés comme s'ils étaient des fonctions. 
+ Ce concept est appelé foncteur ou objet fonctionnel.
+
+Définition du foncteur avec l'opérateur () :
+Lorsque tu définis une classe ou une structure et que tu y ajoutes une surcharge de l'opérateur (), 
+tu transformes cette classe ou structure en un foncteur. 
+*/
+
+
+// Comparateur pour std::tm (on appelle ceci un foncteur)
 struct tmCompare {
     bool operator()(const std::tm& lhs, const std::tm& rhs) const {
         if (lhs.tm_year != rhs.tm_year)
@@ -66,53 +78,16 @@ std::map<std::tm, float, tmCompare> mapExchangeRate(std::ifstream &dataFile) {
     return exchangeRates;
 }
 
-// Fonction pour vérifier si la valeur est valide
-// bool isValidValue(const std::string& valueStr, float& value) {
-//     std::istringstream ss(valueStr);
-//     ss >> value;
-//     if (ss.fail() || value < 0 || value > static_cast<float>(INT_MAX)) {
-//         if (value < 0)
-//             std::cerr << "Error: not a positive number." << std::endl;
-//         else if (value > static_cast<float>(INT_MAX))
-//             std::cerr << "Error: too large a number." << std::endl;
-//         return false;
-//     }
-//     return true;
-// }
 
-// bool isValidValue(const std::string& valueStr, float& value) {
-//     std::size_t value_st;
-// 	std::istringstream ss(valueStr);
-
-//     // Vérifier si la valeur dépasse INT_MAX
-//     ss >> value_st;
-//     // Vérifier si la conversion a échoué ou si la valeur est négative
-//     if (ss.fail() || (value_st > static_cast<std::size_t>(INT_MAX) && value_st < static_cast<std::size_t>(UINT_MAX))) {
-//         if (value_st < 0)
-//             std::cerr << "Error: not a positive number." << std::endl;
-//         return false;
-//     }
-//     if (value_st > static_cast<std::size_t>(INT_MAX)) {
-//         std::cerr << "Error: too large a number." << std::endl;
-//         return false;
-//     }
-
-//     ss >> value;
-
-//     return true;
-// }
 
 bool isValidValue(const std::string& valueStr, float& value) {
     std::istringstream ss(valueStr);
 
-    // Lire la valeur en tant que float
     ss >> value;
 	double valueTest = 	static_cast<double>(value);
-	char minus;
-	ss >> minus;
 
     // Vérifier si la conversion a échoué ou si la valeur est négative
-    if (ss.fail() || valueTest < 0 || minus = '-') {
+    if (ss.fail() || valueTest < 0 || valueStr[0] == '-') {
         std::cerr << "Error: not a positive number." << std::endl;
         return false;
     }
@@ -129,10 +104,12 @@ bool isValidValue(const std::string& valueStr, float& value) {
 // Fonction pour afficher les résultats
 void displayExchangeRate(const std::map<std::tm, float, tmCompare>& exchangeRates, std::ifstream &inputFile) {
     std::string line;
+	//tant que le fichier contient des lignes, getline met a jour le buffer line
     while (std::getline(inputFile, line)) {
         std::istringstream ss(line);
         std::string dateStr, valueStr;
-        if (std::getline(ss, dateStr, '|') && std::getline(ss >> std::ws, valueStr)) {
+        if (std::getline(ss, dateStr, '|') && std::getline(ss >> std::ws, valueStr)) 
+		{
             try {
                 std::tm tm = parseDate(dateStr);
                 float value;

@@ -1,9 +1,11 @@
 #include "Character.hpp"
 #include "AMateria.hpp"
 
-Character::Character(std::string name) : _name(name), _inventory({0,0,0,0})
+Character::Character(std::string name) : _name(name)
 {
 	// std::cout << _name << " Character Constructor\n";
+	for (int i = 0; i < 4; ++i) 
+        _inventory[i] = NULL;
 }
 
 Character::Character(Character& toCopy)
@@ -40,10 +42,7 @@ std::string const & Character::getName() const
 	return(_name);
 }
 
-/* 
-Add Materia in order
-Do nothing if we try to equip thus we already have 4 Materia
-*/
+
 void Character::equip(AMateria* m)
 {
 	if (m)
@@ -53,11 +52,11 @@ void Character::equip(AMateria* m)
 			if (!_inventory[i])
 			{
 				_inventory[i] = m;
-				std::cout << "Character : " << _name << " add materia " << m->getType() << " into his inventory " << std::endl;
+				// std::cout << "Character : " << _name << " add materia " << m->getType() << " into his inventory " << std::endl;
 				return;
 			}
 		}
-		std::cout << "Character " << _name << " can't add the " << m->getType() << "materia into his inventory " << std::endl;
+		// std::cout << "Character " << _name << " can't add the " << m->getType() << "materia into his inventory " << std::endl;
 	}
 }
 

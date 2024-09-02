@@ -1,6 +1,6 @@
 #include "Ice.hpp"
 
-Ice::Ice() : AMateria("cure"){}
+Ice::Ice() : AMateria("ice"){}
 
 Ice::Ice(const Ice& copy): AMateria((const AMateria&)copy) {}
 
@@ -19,5 +19,6 @@ AMateria* Ice::clone() const
 
 void Ice::use(ICharacter& target) const
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	AMateria::use(target);
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

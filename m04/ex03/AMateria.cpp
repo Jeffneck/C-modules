@@ -10,13 +10,20 @@ AMateria::AMateria(const AMateria &toCopy)
 
 AMateria::~AMateria(){}
 
+void		use(ICharacter& target)
+{
+	std::cout << target.getName();
+}
+
+
 AMateria &AMateria::operator=(const AMateria &a)
 {
-	// According to the subject, it's useless to copy the type of the Materia
-	// So we have nothing to do here.
 	(void)a;
 	return (*this);
 }
+
+void		AMateria::use(ICharacter& target) const
+{ (void)target;}
 
 std::string const&	AMateria::getType() const
 {
