@@ -29,6 +29,7 @@ std::tm parseDate(const std::string& date) {
     std::tm tm;
     ::memset(&tm, 0, sizeof(std::tm));
 
+    //utiliser scanf (scan format) mais sur une str
     if (sscanf(date.c_str(), "%d-%d-%d", &tm.tm_year, &tm.tm_mon, &tm.tm_mday) != 3) {
         throw std::runtime_error(std::string("Error: bad input => ") + date);
     }

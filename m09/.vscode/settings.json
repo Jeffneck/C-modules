@@ -50,6 +50,15 @@
 		"sstream": "cpp",
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
-		"typeinfo": "cpp"
+		"typeinfo": "cpp",
+		"cstring": "cpp",
+		"map": "cpp",
+		"cinttypes": "cpp",
+		"charconv": "cpp",
+		"chrono": "cpp",
+		"list": "cpp",
+		"ratio": "cpp",
+		"format": "cpp",
+		"variant": "cpp"
 	}
 }
