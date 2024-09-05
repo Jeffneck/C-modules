@@ -11,6 +11,7 @@
 #include <sstream>
 #include <cctype>
 #include <climits>
+#include <iomanip>
 
 //Manage Vector
 void printVector(const std::vector<unsigned int>& vec);

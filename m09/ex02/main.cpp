@@ -13,12 +13,12 @@ bool isValidUnsignedInt(const std::string& str) {
 unsigned int    getInputArgs(char *arg)
 {
     if (!isValidUnsignedInt(arg)) {
-        std::cerr << "Error: Invalid input '" << arg << "'. Negative numbers are not allowed." << std::endl;
+        // std::cerr << "Error: Invalid input '" << arg << std::endl;
         throw (std::exception());
     }
     unsigned long ulValue = std::strtoul(arg, NULL, 10);
     if (ulValue > UINT_MAX) {
-        std::cerr << "Error: Input '" << arg << "' is out of range for unsigned int." << std::endl;
+        // std::cerr << "Error: Input '" << arg << "' is out of range for unsigned int." << std::endl;
         throw (std::exception());
     }
     return (static_cast<unsigned int>(ulValue));
@@ -29,6 +29,8 @@ int main(int argc, char* argv[]) {
         std::cerr << "Error: Please provide at least one number as argument." << std::endl;
         return 1;
     }
+    // std::cout << std::fixed << std::setprecision(6);
+    std::cout << std::fixed << std::setprecision(6);
 
 
     //ECRITURE DE BEFORE ET AFTER SANS PRISE EN COMPTE DU TEMPS
@@ -40,6 +42,7 @@ int main(int argc, char* argv[]) {
                 value = getInputArgs(argv[i]);
             }catch(std::exception & e){ 
                 std::cerr << "Error" << std::endl;
+                return (1);
             }
             vContainer.push_back(static_cast<unsigned int>(value));
         }
@@ -61,24 +64,15 @@ int main(int argc, char* argv[]) {
     {
         clock_t vStart = clock();
         std::vector<unsigned int> vContainer;
+        unsigned int value;
         for (int i = 1; i < argc; ++i) {
-            if (!isValidUnsignedInt(argv[i])) {
-                std::cerr << "Error: Invalid input '" << argv[i] << "'. Negative numbers are not allowed." << std::endl;
-                return 1;
-            }
-            unsigned long ulValue = std::strtoul(argv[i], NULL, 10);
-            if (ulValue > UINT_MAX) {
-                std::cerr << "Error: Input '" << argv[i] << "' is out of range for unsigned int." << std::endl;
-                return 1;
-            }
-            vContainer.push_back(static_cast<unsigned int>(ulValue));
+            value = std::strtoul(argv[i], NULL, 10);
+            vContainer.push_back(static_cast<unsigned int>(value));
         }
-
         fordJohnsonSort(vContainer);
         clock_t vEnd = clock();
-        double vDuration = static_cast<double>(vEnd - vStart) / CLOCKS_PER_SEC * 1e6;
-
-        std::cout << "Time to process a range of " << vContainer.size() << " elements with std::vector : " << vDuration << " us" << std::endl;
+        double vDuration = (static_cast<double>(vEnd) - static_cast<double>(vStart)) / static_cast<double>(CLOCKS_PER_SEC) * 1000.0;
+        std::cout << "Time to process a range of " << vContainer.size() << " elements with std::vector : " << vDuration << " ms" << std::endl;
     }
     
 
@@ -90,22 +84,15 @@ int main(int argc, char* argv[]) {
     {
         clock_t lStart = clock();
         std::list<unsigned int> lContainer;
+        unsigned int value;
         for (int i = 1; i < argc; ++i) {
-            if (!isValidUnsignedInt(argv[i])) {
-                std::cerr << "Error: Invalid input '" << argv[i] << "'. Negative numbers are not allowed." << std::endl;
-                return 1;
-            }
-            unsigned long ulValue = std::strtoul(argv[i], NULL, 10);
-            if (ulValue > UINT_MAX) {
-                std::cerr << "Error: Input '" << argv[i] << "' is out of range for unsigned int." << std::endl;
-                return 1;
-            }
-            lContainer.push_back(static_cast<unsigned int>(ulValue));
+            value = std::strtoul(argv[i], NULL, 10);
+            lContainer.push_back(static_cast<unsigned int>(value));
         }
         fordJohnsonSort(lContainer);
         clock_t lEnd = clock();
-        double lDuration = static_cast<double>(lEnd - lStart) / CLOCKS_PER_SEC * 1000000;
-        std::cout << "Time to process a range of " << lContainer.size() << " elements with std::list : " << lDuration << " us" << std::endl;
+        double lDuration = (static_cast<double>(lEnd) - static_cast<double>(lStart)) / static_cast<double>(CLOCKS_PER_SEC) * 1000.0;
+        std::cout << "Time to process a range of " << lContainer.size() << " elements with std::vector : " << lDuration << " ms" << std::endl;
     }
 
     return 0;
