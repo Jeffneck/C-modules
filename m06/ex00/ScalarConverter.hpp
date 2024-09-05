@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SCALAR_CONVERTER_HPP
+#define SCALAR_CONVERTER_HPP
 
 #include <iostream>
 #include <string>
@@ -62,3 +63,5 @@ class ScalarConverter {
 		static std::string strToLower(const std::string &literal);
 
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SERIALIZATION_HPP
+#define SERIALIZATION_HPP
 #include <stdint.h>
 #include "Data.hpp" 
 
@@ -13,3 +14,5 @@ class Serialization
 	Serialization();
 	~Serialization();
 };
+
+#endif

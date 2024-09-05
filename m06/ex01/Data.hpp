@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DATE_HPP
+#define DATE_HPP
 #include <string>
 #include <iostream>
 
@@ -18,3 +19,5 @@ class Data
 };
 
 std::ostream 	&operator<<( std::ostream &flux, const Data &Data );
+
+#endif

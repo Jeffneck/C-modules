@@ -55,10 +55,10 @@ void ScalarConverter::convertToFloat(const std::string &literal)
 		std::cout << std::fixed << std::setprecision(ScalarConverter::choosePrecision(literal));
 		std::cout << "float: " << floatValue << "f" << std::endl;
 	} else {
-		if (literal == "-inff" || literal == "+inff" || literal == "nanf") {
+		if (literal == "inff" || literal == "-inff" || literal == "+inff" || literal == "nanf") {
 			std::cout << "float: " << literal << std::endl;
 		} 
-		else if (literal == "-inf" || literal == "+inf" || literal == "nan") {
+		else if (literal == "inf" || literal == "-inf" || literal == "+inf" || literal == "nan") {
 			std::cout << "float: " << literal << "f" << std::endl;
 		}
 		else {
@@ -79,10 +79,10 @@ void ScalarConverter::convertToDouble(const std::string &literal)
 	else
 	{
 		std::string low_l = ScalarConverter::strToLower(literal);
-		if (low_l == "-inff" || low_l == "+inff" || low_l == "nanf") {
+		if (low_l == "inff" ||low_l == "-inff" || low_l == "+inff" || low_l == "nanf") {
 			std::cout << "double : " << low_l.substr(0, low_l.size() - 1) << std::endl;
 		} 
-		else if (low_l == "-inf" || low_l == "+inf" || low_l == "nan") {
+		else if (low_l == "inf" || low_l == "-inf" || low_l == "+inf" || low_l == "nan") {
 			std::cout << "double : " << low_l << std::endl;
 		}
 		else {
