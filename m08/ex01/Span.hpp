@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPAN_HPP
+#define SPAN_HPP
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -56,3 +57,6 @@ class Span
 };
 
 std::ostream 	&operator<<( std::ostream &flux, const Span &span );
+
+
+#endif

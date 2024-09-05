@@ -22,16 +22,16 @@ int main() {
 
         std::cout << "\n\n--------Test 2: Ajout d'une range d'itérateurs ------" << std::endl;
 		// Créer un std::vector vide
-		std::vector<int> numbers;
+		std::vector<int> rangeI;
 
 		// Ajouter des éléments au vecteur
-		numbers.push_back(40);
-		numbers.push_back(50);
-		numbers.push_back(60);
-		numbers.push_back(70);
-		numbers.push_back(80);
+		rangeI.push_back(40);
+		rangeI.push_back(50);
+		rangeI.push_back(60);
+		rangeI.push_back(70);
+		rangeI.push_back(80);
 		try{
-        	span.addItRange(numbers.begin(), numbers.end(), numbers);
+        	span.addItRange(rangeI.begin(), rangeI.end(), rangeI);
 		}
 		catch (const Span::MaxSizeExeption& e) {
             std::cerr << e.what();
@@ -67,20 +67,20 @@ int main() {
 
 
 
-        std::cout << "\n\n--------Test 5: Gestion des exceptions pour les opérations avec des itérateurs invalides ------" << std::endl;
+        std::cout << "\n\n--------Test 5: Gestion de l'exception pour l'opération avec une range contenant trop d'iterators ------" << std::endl;
 		// Créer un std::vector vide
-		std::vector<int> invalidNumbers;
+		std::vector<int> InvalidRangeIt;
 
 		// Ajouter des éléments au vecteur
-		invalidNumbers.push_back(100);
-		invalidNumbers.push_back(200);
-		invalidNumbers.push_back(300);
+		InvalidRangeIt.push_back(100);
+		InvalidRangeIt.push_back(200);
+		InvalidRangeIt.push_back(300);
         Span spanWithException(2);  // Capacité de 2 éléments
 
         try {
             // Cette ligne devrait lancer une exception car les itérateurs ne sont pas valides
-            spanWithException.addItRange(invalidNumbers.begin(), invalidNumbers.end(), numbers);
-        } catch (const std::invalid_argument& e) {
+            spanWithException.addItRange(InvalidRangeIt.begin(), InvalidRangeIt.end(), InvalidRangeIt);
+        } catch (const std::exception& e) {
             std::cerr << e.what();
         }
 

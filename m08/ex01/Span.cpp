@@ -36,7 +36,7 @@ std::vector<int>	Span::getIntVector( void ) const
 void Span::addItRange(std::vector<int>::iterator itBegin, std::vector<int>::iterator itEnd, std::vector<int>& container) 
 {
     if (!isValidRange(itBegin, itEnd, container)) {
-        throw std::invalid_argument("Error: Invalid iterators or iterators do not belong to the same container.");
+        throw std::exception();
     }
     for (; itBegin != itEnd; ++itBegin) {
         this->addNumber(*itBegin);

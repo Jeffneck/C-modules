@@ -1,16 +1,17 @@
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <exception>
 
 
 /*
-	T represente la variable du template
-	typename T represente le type de la variable du template
-	typename T::iterator represente le type iterator qui est utilise dans le container de type T (T  est donc obligatoirement un container contenant un type iterator)
-
-	Explication de la syntaxe "typename T::iterator"
-	Types dépendants : Dans les templates, des membres comme T::iterator sont des types qui dépendent du type T. Le compilateur ne peut pas savoir automatiquement que T::iterator est un type, d'où l'erreur.
-	Usage de typename : En C++, le mot-clé typename est utilisé pour indiquer au compilateur que ce qui suit est un type dépendant du template.
+Utilite du mot cle typename
+	*1*Déclaration de type générique : typename est utilisé pour indiquer que quelque chose est un type dans la définition d'un template.
+	*2*Clarification du type dépendant : Lorsqu'un type dépend d'un autre paramètre de template, typename est nécessaire pour indiquer explicitement qu'il s'agit d'un type.
+	*3*Éviter l'ambiguïté : Il aide à résoudre les ambiguïtés dans les expressions où le compilateur pourrait confondre un type et une autre entité (comme une fonction ou un membre).
 */
 
 
@@ -18,9 +19,10 @@ template <typename T>
 typename T::iterator easyfind(T& container, int value)
 {
 	typename T::iterator it = std::find(container.begin(), container.end(), value);
-	if(it == container.end())
-		throw(std::runtime_error("Exception: Value not found"));
+	if(it == container.end()) //si .find() retourne l'iterateur .end() c' est que value n' a pas ete trouvee 
+		throw(std::exception());
 	return(it);
 }
 
 
+#endif

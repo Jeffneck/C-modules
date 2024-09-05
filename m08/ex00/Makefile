@@ -2,7 +2,7 @@ NAME		= easyfind
 
 CC			= c++
 
-CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -std=c++98 
 
 SRC_FILES 	=	main.cpp \
 
