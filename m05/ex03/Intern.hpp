@@ -8,13 +8,7 @@
 #include <iostream>
 #include <cctype> // Pour std::tolower
 
-enum 
-{
-        ROBOTOMY_REQUEST,
-        SHRUBBERY_CREATION,
-        PRESIDENTIAL_PARDON,
-        NUM_FORMS
-};
+#define NUM_FORMS 3
 
 class Intern
 {

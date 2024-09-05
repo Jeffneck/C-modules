@@ -9,6 +9,9 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
+
+
+
     try {
         std::cout << "\n-------CONSTRUCT FORM WITH GRADE TOO HIGH----------\n" << std::endl;
         Form form2("Contract", 100, 0);
@@ -16,12 +19,18 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
+
+
+
     try {
         std::cout << "\n-------CONSTRUCT WITH GRADE OK----------\n" << std::endl;
         Form form3("Contract", 100, 100);
     } catch (const std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
+
+
+
 
     std::cout << "\n-------TEST BE SIGNED KO----------\n" << std::endl;
 
@@ -35,6 +44,9 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
+
+
+
     std::cout << "\n-------TEST BE SIGNED OK----------\n" << std::endl;
 
     try {
@@ -47,6 +59,9 @@ int main() {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
+
+
+
     std::cout << "\n-------TEST SIGN FORM KO----------\n" << std::endl;
 
     try {
@@ -58,6 +73,8 @@ int main() {
     } catch (const std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
+
+
 
     std::cout << "\n-------TEST SIGN FORM OK----------\n" << std::endl;
 
