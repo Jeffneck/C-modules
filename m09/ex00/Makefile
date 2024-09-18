@@ -5,10 +5,11 @@ CC			= c++
 CFLAGS		= -std=c++98 -g3 -Wall -Wextra -Werror
 
 SRC_FILES 	=	main.cpp \
+				BitcoinExchange.cpp\
 
 OBJ			= $(SRC_FILES:.cpp=.o)
 
-INC 		=	Btc.hpp \
+INC 		=	BitcoinExchange.hpp\
 				
 
 %.o   : %.cpp $(INC)

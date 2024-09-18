@@ -53,17 +53,17 @@ void fordJohnsonSort(std::list<unsigned int>& lst) {
     }
 
     std::list<unsigned int> jacobsthalSeq = generateJacobsthalList(pend.size());
-    // for (std::list<unsigned int>::reverse_iterator rit = jacobsthalSeq.rbegin(); rit != jacobsthalSeq.rend(); ++rit) {
-    //     if (*rit < static_cast<unsigned int>(pend.size())) {
-    //         std::list<unsigned int>::iterator pendIt = pend.begin();
-    //         std::advance(pendIt, *rit);
-    //         S.insert(std::lower_bound(S.begin(), S.end(), *pendIt), *pendIt);
-    //     }
-    // }
-    for (std::list<unsigned int>::iterator it = pend.begin(); it != pend.end(); ++it) {
-        S.insert(std::lower_bound(S.begin(), S.end(), *it), *it);
+    for (std::list<unsigned int>::reverse_iterator rit = jacobsthalSeq.rbegin(); rit != jacobsthalSeq.rend(); ++rit) {
+        if (*rit < static_cast<unsigned int>(pend.size())) {
+            std::list<unsigned int>::iterator pendIt = pend.begin();
+            std::advance(pendIt, *rit);
+            S.insert(std::lower_bound(S.begin(), S.end(), *pendIt), *pendIt);
+        }
     }
 
+    // for (std::list<unsigned int>::iterator it = pend.begin(); it != pend.end(); ++it) {
+    //     S.insert(std::lower_bound(S.begin(), S.end(), *it), *it);
+    // }
     if (isOdd) {
         S.insert(std::lower_bound(S.begin(), S.end(), laggard), laggard);
     }

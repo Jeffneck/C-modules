@@ -10,7 +10,7 @@
 int main() {
     try {
         std::cout << "--------Test 1: Création de Span et ajout d'un seul nombre a la fois------" << std::endl;
-        Span span(10);  // Capacité de 5 éléments
+        Span span(10);  
         span.addNumber(10);
         span.addNumber(20);
         span.addNumber(30);
