@@ -7,6 +7,7 @@ int main(int ac, char **av) {
         std::ifstream dataFile;
         extractFile(inputFile, av[1]);
         extractFile(dataFile, "data.csv");
+        // std::cout << "test" <<std::endl;
         std::map<std::tm, float, tmCompare> exchangeRates = mapExchangeRate(dataFile);
         displayExchangeRate(exchangeRates, inputFile);
     } catch (const std::exception& e) {

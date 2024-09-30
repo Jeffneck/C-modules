@@ -14,6 +14,37 @@ std::ifstream& extractFile(std::ifstream& filestream, const char *filename) {
     return filestream;
 }
 
+bool    isValidDate(std::tm &tm)
+{
+    
+    // std::cout << "tm avant :"<< tm.tm_year <<" "<< tm.tm_mon <<" "<< tm.tm_mday<< std::endl;
+    //dates negatives ou nulles
+    if(tm.tm_year < 1 || tm.tm_mon < 1 || tm.tm_mon > 12 || tm.tm_mday < 1)
+        return (false);
+
+    //annees normales et bissextiles
+    if((tm.tm_mon == 1 && tm.tm_mday > 31)
+        || (tm.tm_mon == 2 && tm.tm_mday > 29)
+        || (tm.tm_mon == 3 && tm.tm_mday > 31)
+        || (tm.tm_mon == 4 && tm.tm_mday > 30)
+        || (tm.tm_mon == 5 && tm.tm_mday > 31)
+        || (tm.tm_mon == 6 && tm.tm_mday > 30)
+        || (tm.tm_mon == 7 && tm.tm_mday > 31)
+        || (tm.tm_mon == 8 && tm.tm_mday > 31)
+        || (tm.tm_mon == 9 && tm.tm_mday > 30)
+        || (tm.tm_mon == 10 && tm.tm_mday > 31)
+        || (tm.tm_mon == 11 && tm.tm_mday > 30)
+        || (tm.tm_mon == 12 && tm.tm_mday > 31))
+        {
+            return (false);
+        }
+
+    //annees non bissextiles
+    if(tm.tm_year % 4 != 0 && tm.tm_mon == 2 && tm.tm_mday == 29)
+        return (false);
+    return (true);
+}
+
 // Fonction pour parser une date au format "YYYY-MM-DD" en std::tm
 std::tm parseDate(const std::string& date) {
     std::tm tm;
@@ -24,9 +55,10 @@ std::tm parseDate(const std::string& date) {
         throw std::runtime_error(std::string("Error: bad input => ") + date);
     }
 
-    tm.tm_year -= 1900; // Année depuis 1900
-    tm.tm_mon -= 1;     // Mois entre 0 et 11
-
+    if (!isValidDate(tm)){
+        throw std::runtime_error(std::string("Error: bad input => ") + date);
+    }
+    // std::cout << "tm :"<< tm.tm_year <<" "<< tm.tm_mon <<" "<< tm.tm_mday<< std::endl;
     return tm;
 }
 
@@ -39,8 +71,15 @@ std::map<std::tm, float, tmCompare> mapExchangeRate(std::ifstream &dataFile) {
         std::string date;
         float rate;
         if (std::getline(ss, date, ',') && ss >> rate) {
-            std::tm tm = parseDate(date);
-            exchangeRates[tm] = rate;
+            try{
+                std::tm tm = parseDate(date);
+                exchangeRates[tm] = rate;
+            }
+            catch(const std::runtime_error &e)
+            {
+                std::cerr << "Error: impossible to parse data.csv" << std::endl;
+                throw e;
+            }
         }
     }
     return exchangeRates;
@@ -97,7 +136,9 @@ void displayRates(std::string &line, std::ifstream &inputFile, const std::map<st
                 std::tm tm = parseDate(dateStr);
                 float value;
                 if (isValidValue(valueStr, value)) {
+                    //rechercher dans la map, l' elem stocke dont la date est > ou == a la date de l' index
                     std::map<std::tm, float, tmCompare>::const_iterator it = exchangeRates.lower_bound(tm);
+                    //si l' elem trouve est > a la date recherchee, on va sur la valeur inferieure stockee (ou on declenche une erreur si aucune date ne corresp aux criteres)
                     if (it == exchangeRates.end() || it->first.tm_year != tm.tm_year || 
                         it->first.tm_mon != tm.tm_mon || it->first.tm_mday != tm.tm_mday) {
                         if (it != exchangeRates.begin()) {
@@ -112,7 +153,9 @@ void displayRates(std::string &line, std::ifstream &inputFile, const std::map<st
             } catch (const std::exception& e) {
                 std::cerr << e.what() << std::endl;
             }
-        } else {
+        } 
+        //Quand la ligne est mal formatee
+        else {
             std::cerr << "Error: bad input => " << line << std::endl;
         }
     }

@@ -38,6 +38,7 @@ tu transformes cette classe ou structure en un foncteur.
 
 std::map<std::tm, float, tmCompare> mapExchangeRate(std::ifstream &dataFile);
 bool isValidValue(const std::string& valueStr, float& value);
+bool isValidDate(std::tm &tm);
 void checkHeaderInFile(std::string firstLine);
 void displayRates(std::string &line, std::ifstream &inputFile, const std::map<std::tm, float, tmCompare>& exchangeRates);
 void displayExchangeRate(const std::map<std::tm, float, tmCompare>& exchangeRates, std::ifstream &inputFile);
