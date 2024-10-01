@@ -29,11 +29,10 @@ int main(int argc, char* argv[]) {
         std::cerr << "Error: Please provide at least one number as argument." << std::endl;
         return 1;
     }
-    // std::cout << std::fixed << std::setprecision(6);
     std::cout << std::fixed << std::setprecision(6);
 
 
-    //ECRITURE DE BEFORE ET AFTER SANS PRISE EN COMPTE DU TEMPS
+    // WRITE BEFORE AND AFTER WITHOUT TAKING TIME IN ACCOUNT (BECAUSE WRITING CHANGE THE TIME)
     {
         std::vector<unsigned int> vContainer;
         unsigned int value;
@@ -51,15 +50,15 @@ int main(int argc, char* argv[]) {
 
         fordJohnsonSort(vContainer);
 
-        std::cout << "After: ";
+        std::cout << "After:  ";
         printVector(vContainer);
     }
 
 
     //TIME VECTOR
     /*
-        Plus rapide pour cette operation car l'acces aux valeurs internes est optimise dans std::vector ce qui dans notre cas est important
-        On peut d'ailleurs utiliser l'operateur[] pour acceder aux index
+        Faster because the acces to intern values is optimised in std::vector (this is important in our sorting algorithm)
+        By the way, we can use the operator [] to acces those intern values
     */
     {
         clock_t vStart = clock();
@@ -78,8 +77,8 @@ int main(int argc, char* argv[]) {
 
     //UTILISATION DE LA LISTE
     /* 
-        Plus long pour cette operation car l'acces aux valeurs internes est plus long que pour std::vector ce qui dans notre cas est important
-        On ne peut d' ailleurs pas utiliser l' operateur[] et on est obliges de passer par des iterateurs
+        Longer because the acces to intern values is not planned in std::list (important for our sorting algorithm)
+        By the way, we can't use the operator [] to acces those intern values we must use iterators to browse std::list
     */
     {
         clock_t lStart = clock();
@@ -92,7 +91,9 @@ int main(int argc, char* argv[]) {
         fordJohnsonSort(lContainer);
         clock_t lEnd = clock();
         double lDuration = (static_cast<double>(lEnd) - static_cast<double>(lStart)) / static_cast<double>(CLOCKS_PER_SEC) * 1000.0;
-        std::cout << "Time to process a range of " << lContainer.size() << " elements with std::vector : " << lDuration << " ms" << std::endl;
+        std::cout << "Time to process a range of " << lContainer.size() << " elements with std::list :   " << lDuration << " ms" << std::endl;
+        std::cout << "Test :  ";
+        printList(lContainer);//test
     }
 
     return 0;
